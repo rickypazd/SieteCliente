@@ -1,0 +1,6 @@
+framework module Pods_SieteCliente {
+  umbrella header "Pods-SieteCliente-umbrella.h"
+
+  export *
+  module * { export * }
+}

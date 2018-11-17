@@ -7,21 +7,104 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		834E426AE67C5BDB5866B9C2 /* Pods_SieteCliente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4594B68A18F9590B0C8520B /* Pods_SieteCliente.framework */; };
+		C805BC7A2179FF0800CFCCE3 /* HistorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC792179FF0800CFCCE3 /* HistorialController.swift */; };
+		C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */; };
+		C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */; };
+		C81BF7202181756900C515F3 /* OpcionesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BF71F2181756900C515F3 /* OpcionesController.swift */; };
+		C8275790213ECB86002968AF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C827578F213ECB86002968AF /* RoundButton.swift */; };
+		C8275792213ECEFE002968AF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8275791213ECEFE002968AF /* UIColor.swift */; };
+		C8275794213ED06E002968AF /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8275793213ED06E002968AF /* UICustomView.swift */; };
 		C8354D9D211B409B001D9007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354D9C211B409B001D9007 /* AppDelegate.swift */; };
-		C8354D9F211B409B001D9007 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354D9E211B409B001D9007 /* ViewController.swift */; };
 		C8354DA2211B409B001D9007 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA0211B409B001D9007 /* Main.storyboard */; };
 		C8354DA4211B409C001D9007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA3211B409C001D9007 /* Assets.xcassets */; };
 		C8354DA7211B409C001D9007 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA5211B409C001D9007 /* LaunchScreen.storyboard */; };
+		C8354DB1211B46F1001D9007 /* RegistrarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354DB0211B46F1001D9007 /* RegistrarController.swift */; };
+		C8354DB3211B4712001D9007 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354DB2211B4712001D9007 /* LoginController.swift */; };
+		C840E05A215D10D8001FB80A /* CancelarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840E059215D10D8001FB80A /* CancelarViajeController.swift */; };
+		C8419650214DA47D00C6ED24 /* CalcularRutaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841964F214DA47D00C6ED24 /* CalcularRutaController.swift */; };
+		C842D71821480D9A00F89F52 /* TransaccionesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C842D71721480D9A00F89F52 /* TransaccionesController.swift */; };
+		C8436ECD2126FF0300A3E67E /* PerfilClienteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8436ECC2126FF0300A3E67E /* PerfilClienteController.swift */; };
+		C8436ECF2126FF1900A3E67E /* MisViajesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8436ECE2126FF1900A3E67E /* MisViajesController.swift */; };
+		C84FCCAF218A0251004A41DB /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84FCCAE218A0251004A41DB /* ChatController.swift */; };
+		C84FCCB1218A06E5004A41DB /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84FCCB0218A06E5004A41DB /* ChatCell.swift */; };
+		C84FCCB3218A2606004A41DB /* ChatEmisorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */; };
+		C858868D21271CDA0045100F /* MisViajesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C858868C21271CDA0045100F /* MisViajesTableViewCell.swift */; };
+		C86BD926216B9D1F0094584C /* CalificarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD925216B9D1F0094584C /* CalificarViajeController.swift */; };
+		C89040772153E69300D70BC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C89040762153E69300D70BC3 /* GoogleService-Info.plist */; };
+		C8A3ABB721231307001F1214 /* FinalizarRegistroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A3ABB621231307001F1214 /* FinalizarRegistroController.swift */; };
+		C8A5971021481360002155E5 /* TransaccionesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A5970F21481360002155E5 /* TransaccionesTableViewCell.swift */; };
+		C8A5B9AE21402E0700AC8628 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */; };
+		C8AE8059211DDC10005A132E /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8AE8058211DDC10005A132E /* Util.swift */; };
+		C8CCEAD721469C3D00063515 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CCEAD621469C3D00063515 /* CustomLabel.swift */; };
+		C8CF4462218B7031007BC3FF /* SieteToGoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4461218B7031007BC3FF /* SieteToGoController.swift */; };
+		C8CF4464218B8720007BC3FF /* PedidosToGoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4463218B8720007BC3FF /* PedidosToGoController.swift */; };
+		C8CF4466218B8804007BC3FF /* PedidoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4465218B8804007BC3FF /* PedidoTableViewCell.swift */; };
+		C8CF4468218C4005007BC3FF /* EsperandoConductorToGoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */; };
+		C8D1FF2C2121B84D0099D6EF /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1FF2B2121B84D0099D6EF /* MainNavigationController.swift */; };
+		C8ED75882174AE81009126E1 /* IniciarSesionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED75872174AE81009126E1 /* IniciarSesionController.swift */; };
+		C8ED758A2174C390009126E1 /* ElegirTipoSieteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED75892174C390009126E1 /* ElegirTipoSieteController.swift */; };
+		C8ED75902174EA8D009126E1 /* TiposViajeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED758F2174EA8D009126E1 /* TiposViajeCollectionCell.swift */; };
+		C8F2F7EF214E95ED00383C2E /* PidiendoSieteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7EE214E95ED00383C2E /* PidiendoSieteController.swift */; };
+		C8F2F7F1214E996100383C2E /* EsperandoConductorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F0214E996100383C2E /* EsperandoConductorController.swift */; };
+		C8F2F7F3214E9AC000383C2E /* FinalizarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F2214E9AC000383C2E /* FinalizarViajeController.swift */; };
+		C8F2F7F5214E9B5C00383C2E /* VerPerfilConductorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F4214E9B5C00383C2E /* VerPerfilConductorController.swift */; };
+		C8FE33A321247B8500DCA4E6 /* PrincipalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A221247B8500DCA4E6 /* PrincipalController.swift */; };
+		C8FE33A521247B9200DCA4E6 /* TabMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A421247B9200DCA4E6 /* TabMenuController.swift */; };
+		C8FE33A721247C2200DCA4E6 /* TabBarMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A621247C2200DCA4E6 /* TabBarMainController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2064EA8CAF76F3A157704BCE /* Pods-SieteCliente.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SieteCliente.release.xcconfig"; path = "Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente.release.xcconfig"; sourceTree = "<group>"; };
+		BE564FD1790B1DF8B22EB649 /* Pods-SieteCliente.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SieteCliente.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente.debug.xcconfig"; sourceTree = "<group>"; };
+		C805BC792179FF0800CFCCE3 /* HistorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialController.swift; sourceTree = "<group>"; };
+		C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialTableViewCell.swift; sourceTree = "<group>"; };
+		C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViajesController.swift; sourceTree = "<group>"; };
+		C81BF71F2181756900C515F3 /* OpcionesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesController.swift; sourceTree = "<group>"; };
+		C827578F213ECB86002968AF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		C8275791213ECEFE002968AF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		C8275793213ED06E002968AF /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
 		C8354D99211B409B001D9007 /* SieteCliente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SieteCliente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8354D9C211B409B001D9007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C8354D9E211B409B001D9007 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C8354DA1211B409B001D9007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C8354DA3211B409C001D9007 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8354DA6211B409C001D9007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8354DA8211B409C001D9007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C8354DB0211B46F1001D9007 /* RegistrarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarController.swift; sourceTree = "<group>"; };
+		C8354DB2211B4712001D9007 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		C840E059215D10D8001FB80A /* CancelarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelarViajeController.swift; sourceTree = "<group>"; };
+		C841964F214DA47D00C6ED24 /* CalcularRutaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcularRutaController.swift; sourceTree = "<group>"; };
+		C842D71721480D9A00F89F52 /* TransaccionesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaccionesController.swift; sourceTree = "<group>"; };
+		C8436ECC2126FF0300A3E67E /* PerfilClienteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilClienteController.swift; sourceTree = "<group>"; };
+		C8436ECE2126FF1900A3E67E /* MisViajesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisViajesController.swift; sourceTree = "<group>"; };
+		C84FCCAE218A0251004A41DB /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
+		C84FCCB0218A06E5004A41DB /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmisorCell.swift; sourceTree = "<group>"; };
+		C858868C21271CDA0045100F /* MisViajesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisViajesTableViewCell.swift; sourceTree = "<group>"; };
+		C86BD925216B9D1F0094584C /* CalificarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalificarViajeController.swift; sourceTree = "<group>"; };
+		C89040762153E69300D70BC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		C8A3ABB621231307001F1214 /* FinalizarRegistroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizarRegistroController.swift; sourceTree = "<group>"; };
+		C8A5970F21481360002155E5 /* TransaccionesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaccionesTableViewCell.swift; sourceTree = "<group>"; };
+		C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		C8AE8058211DDC10005A132E /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		C8CCEAD621469C3D00063515 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		C8CF4461218B7031007BC3FF /* SieteToGoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SieteToGoController.swift; sourceTree = "<group>"; };
+		C8CF4463218B8720007BC3FF /* PedidosToGoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidosToGoController.swift; sourceTree = "<group>"; };
+		C8CF4465218B8804007BC3FF /* PedidoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedidoTableViewCell.swift; sourceTree = "<group>"; };
+		C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperandoConductorToGoController.swift; sourceTree = "<group>"; };
+		C8D1FF2B2121B84D0099D6EF /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
+		C8D2DB9D2188E0F50014630A /* SieteCliente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SieteCliente.entitlements; sourceTree = "<group>"; };
+		C8ED75872174AE81009126E1 /* IniciarSesionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionController.swift; sourceTree = "<group>"; };
+		C8ED75892174C390009126E1 /* ElegirTipoSieteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirTipoSieteController.swift; sourceTree = "<group>"; };
+		C8ED758F2174EA8D009126E1 /* TiposViajeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiposViajeCollectionCell.swift; sourceTree = "<group>"; };
+		C8F2F7EE214E95ED00383C2E /* PidiendoSieteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PidiendoSieteController.swift; sourceTree = "<group>"; };
+		C8F2F7F0214E996100383C2E /* EsperandoConductorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperandoConductorController.swift; sourceTree = "<group>"; };
+		C8F2F7F2214E9AC000383C2E /* FinalizarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizarViajeController.swift; sourceTree = "<group>"; };
+		C8F2F7F4214E9B5C00383C2E /* VerPerfilConductorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerPerfilConductorController.swift; sourceTree = "<group>"; };
+		C8FE33A221247B8500DCA4E6 /* PrincipalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalController.swift; sourceTree = "<group>"; };
+		C8FE33A421247B9200DCA4E6 /* TabMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuController.swift; sourceTree = "<group>"; };
+		C8FE33A621247C2200DCA4E6 /* TabBarMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainController.swift; sourceTree = "<group>"; };
+		F4594B68A18F9590B0C8520B /* Pods_SieteCliente.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SieteCliente.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +112,41 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				834E426AE67C5BDB5866B9C2 /* Pods_SieteCliente.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		33DBC755A115470CB9800362 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BE564FD1790B1DF8B22EB649 /* Pods-SieteCliente.debug.xcconfig */,
+				2064EA8CAF76F3A157704BCE /* Pods-SieteCliente.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C827578E213ECB59002968AF /* design */ = {
+			isa = PBXGroup;
+			children = (
+				C827578F213ECB86002968AF /* RoundButton.swift */,
+				C8275791213ECEFE002968AF /* UIColor.swift */,
+				C8275793213ED06E002968AF /* UICustomView.swift */,
+				C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */,
+				C8CCEAD621469C3D00063515 /* CustomLabel.swift */,
+			);
+			path = design;
+			sourceTree = "<group>";
+		};
 		C8354D90211B409B001D9007 = {
 			isa = PBXGroup;
 			children = (
 				C8354D9B211B409B001D9007 /* SieteCliente */,
 				C8354D9A211B409B001D9007 /* Products */,
+				33DBC755A115470CB9800362 /* Pods */,
+				CB8156B1740828C443E89356 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +161,82 @@
 		C8354D9B211B409B001D9007 /* SieteCliente */ = {
 			isa = PBXGroup;
 			children = (
+				C8D2DB9D2188E0F50014630A /* SieteCliente.entitlements */,
+				C827578E213ECB59002968AF /* design */,
+				C8436ED02127181800A3E67E /* table controllers */,
+				C8AE8057211DDC03005A132E /* utiles */,
+				C8354DB4211B471E001D9007 /* controllers */,
 				C8354D9C211B409B001D9007 /* AppDelegate.swift */,
-				C8354D9E211B409B001D9007 /* ViewController.swift */,
 				C8354DA0211B409B001D9007 /* Main.storyboard */,
 				C8354DA3211B409C001D9007 /* Assets.xcassets */,
 				C8354DA5211B409C001D9007 /* LaunchScreen.storyboard */,
+				C89040762153E69300D70BC3 /* GoogleService-Info.plist */,
 				C8354DA8211B409C001D9007 /* Info.plist */,
 			);
 			path = SieteCliente;
+			sourceTree = "<group>";
+		};
+		C8354DB4211B471E001D9007 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C841964F214DA47D00C6ED24 /* CalcularRutaController.swift */,
+				C86BD925216B9D1F0094584C /* CalificarViajeController.swift */,
+				C840E059215D10D8001FB80A /* CancelarViajeController.swift */,
+				C8ED75892174C390009126E1 /* ElegirTipoSieteController.swift */,
+				C8F2F7F0214E996100383C2E /* EsperandoConductorController.swift */,
+				C8A3ABB621231307001F1214 /* FinalizarRegistroController.swift */,
+				C8F2F7F2214E9AC000383C2E /* FinalizarViajeController.swift */,
+				C8ED75872174AE81009126E1 /* IniciarSesionController.swift */,
+				C8354DB2211B4712001D9007 /* LoginController.swift */,
+				C8D1FF2B2121B84D0099D6EF /* MainNavigationController.swift */,
+				C8436ECE2126FF1900A3E67E /* MisViajesController.swift */,
+				C8436ECC2126FF0300A3E67E /* PerfilClienteController.swift */,
+				C8F2F7EE214E95ED00383C2E /* PidiendoSieteController.swift */,
+				C8FE33A221247B8500DCA4E6 /* PrincipalController.swift */,
+				C8354DB0211B46F1001D9007 /* RegistrarController.swift */,
+				C8FE33A621247C2200DCA4E6 /* TabBarMainController.swift */,
+				C8FE33A421247B9200DCA4E6 /* TabMenuController.swift */,
+				C842D71721480D9A00F89F52 /* TransaccionesController.swift */,
+				C8F2F7F4214E9B5C00383C2E /* VerPerfilConductorController.swift */,
+				C805BC792179FF0800CFCCE3 /* HistorialController.swift */,
+				C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */,
+				C81BF71F2181756900C515F3 /* OpcionesController.swift */,
+				C84FCCAE218A0251004A41DB /* ChatController.swift */,
+				C8CF4461218B7031007BC3FF /* SieteToGoController.swift */,
+				C8CF4463218B8720007BC3FF /* PedidosToGoController.swift */,
+				C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		C8436ED02127181800A3E67E /* table controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C858868C21271CDA0045100F /* MisViajesTableViewCell.swift */,
+				C8A5970F21481360002155E5 /* TransaccionesTableViewCell.swift */,
+				C8ED758F2174EA8D009126E1 /* TiposViajeCollectionCell.swift */,
+				C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */,
+				C84FCCB0218A06E5004A41DB /* ChatCell.swift */,
+				C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */,
+				C8CF4465218B8804007BC3FF /* PedidoTableViewCell.swift */,
+			);
+			path = "table controllers";
+			sourceTree = "<group>";
+		};
+		C8AE8057211DDC03005A132E /* utiles */ = {
+			isa = PBXGroup;
+			children = (
+				C8AE8058211DDC10005A132E /* Util.swift */,
+			);
+			path = utiles;
+			sourceTree = "<group>";
+		};
+		CB8156B1740828C443E89356 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F4594B68A18F9590B0C8520B /* Pods_SieteCliente.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +246,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8354DAB211B409C001D9007 /* Build configuration list for PBXNativeTarget "SieteCliente" */;
 			buildPhases = (
+				4160C18880D9593E970672D6 /* [CP] Check Pods Manifest.lock */,
 				C8354D95211B409B001D9007 /* Sources */,
 				C8354D96211B409B001D9007 /* Frameworks */,
 				C8354D97211B409B001D9007 /* Resources */,
+				CC6199A747D6FAED381AEBD1 /* [CP] Embed Pods Frameworks */,
+				69EB13C775C081584BBED21B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,6 +274,11 @@
 				TargetAttributes = {
 					C8354D98211B409B001D9007 = {
 						CreatedOnToolsVersion = 9.4.1;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 0;
+							};
+						};
 					};
 				};
 			};
@@ -123,6 +306,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8354DA7211B409C001D9007 /* LaunchScreen.storyboard in Resources */,
+				C89040772153E69300D70BC3 /* GoogleService-Info.plist in Resources */,
 				C8354DA4211B409C001D9007 /* Assets.xcassets in Resources */,
 				C8354DA2211B409B001D9007 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +314,134 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4160C18880D9593E970672D6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SieteCliente-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		69EB13C775C081584BBED21B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC6199A747D6FAED381AEBD1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
+				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C8354D95211B409B001D9007 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8354D9F211B409B001D9007 /* ViewController.swift in Sources */,
+				C8436ECF2126FF1900A3E67E /* MisViajesController.swift in Sources */,
+				C8ED75902174EA8D009126E1 /* TiposViajeCollectionCell.swift in Sources */,
+				C842D71821480D9A00F89F52 /* TransaccionesController.swift in Sources */,
+				C8D1FF2C2121B84D0099D6EF /* MainNavigationController.swift in Sources */,
+				C8F2F7F5214E9B5C00383C2E /* VerPerfilConductorController.swift in Sources */,
+				C8A5B9AE21402E0700AC8628 /* CustomTextField.swift in Sources */,
+				C858868D21271CDA0045100F /* MisViajesTableViewCell.swift in Sources */,
+				C86BD926216B9D1F0094584C /* CalificarViajeController.swift in Sources */,
+				C8CF4468218C4005007BC3FF /* EsperandoConductorToGoController.swift in Sources */,
+				C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */,
+				C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */,
 				C8354D9D211B409B001D9007 /* AppDelegate.swift in Sources */,
+				C840E05A215D10D8001FB80A /* CancelarViajeController.swift in Sources */,
+				C8436ECD2126FF0300A3E67E /* PerfilClienteController.swift in Sources */,
+				C8A3ABB721231307001F1214 /* FinalizarRegistroController.swift in Sources */,
+				C8F2F7F1214E996100383C2E /* EsperandoConductorController.swift in Sources */,
+				C805BC7A2179FF0800CFCCE3 /* HistorialController.swift in Sources */,
+				C8CCEAD721469C3D00063515 /* CustomLabel.swift in Sources */,
+				C8AE8059211DDC10005A132E /* Util.swift in Sources */,
+				C8CF4466218B8804007BC3FF /* PedidoTableViewCell.swift in Sources */,
+				C84FCCB3218A2606004A41DB /* ChatEmisorCell.swift in Sources */,
+				C84FCCB1218A06E5004A41DB /* ChatCell.swift in Sources */,
+				C8ED75882174AE81009126E1 /* IniciarSesionController.swift in Sources */,
+				C8354DB1211B46F1001D9007 /* RegistrarController.swift in Sources */,
+				C8F2F7EF214E95ED00383C2E /* PidiendoSieteController.swift in Sources */,
+				C8FE33A321247B8500DCA4E6 /* PrincipalController.swift in Sources */,
+				C8A5971021481360002155E5 /* TransaccionesTableViewCell.swift in Sources */,
+				C8CF4464218B8720007BC3FF /* PedidosToGoController.swift in Sources */,
+				C8F2F7F3214E9AC000383C2E /* FinalizarViajeController.swift in Sources */,
+				C8275794213ED06E002968AF /* UICustomView.swift in Sources */,
+				C81BF7202181756900C515F3 /* OpcionesController.swift in Sources */,
+				C8275792213ECEFE002968AF /* UIColor.swift in Sources */,
+				C8CF4462218B7031007BC3FF /* SieteToGoController.swift in Sources */,
+				C8354DB3211B4712001D9007 /* LoginController.swift in Sources */,
+				C8275790213ECB86002968AF /* RoundButton.swift in Sources */,
+				C8FE33A721247C2200DCA4E6 /* TabBarMainController.swift in Sources */,
+				C8419650214DA47D00C6ED24 /* CalcularRutaController.swift in Sources */,
+				C84FCCAF218A0251004A41DB /* ChatController.swift in Sources */,
+				C8ED758A2174C390009126E1 /* ElegirTipoSieteController.swift in Sources */,
+				C8FE33A521247B9200DCA4E6 /* TabMenuController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,16 +583,20 @@
 		};
 		C8354DAC211B409C001D9007 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BE564FD1790B1DF8B22EB649 /* Pods-SieteCliente.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NLM2M5749F;
 				INFOPLIST_FILE = SieteCliente/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -295,16 +604,20 @@
 		};
 		C8354DAD211B409C001D9007 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2064EA8CAF76F3A157704BCE /* Pods-SieteCliente.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = NLM2M5749F;
 				INFOPLIST_FILE = SieteCliente/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
