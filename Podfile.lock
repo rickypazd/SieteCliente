@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - CRGradientNavigationBar (0.3.2)
   - DatePickerDialog (2.0)
   - DLRadioButton (1.4.12)
   - FBSDKCoreKit (4.35.0):
@@ -14,6 +15,7 @@ PODS:
     - FBSDKCoreKit
   - FBSDKShareKit (4.35.0):
     - FBSDKCoreKit (~> 4.35.0)
+  - FeelingsView (1.1)
   - Firebase/Core (5.5.0):
     - Firebase/CoreOnly
     - FirebaseAnalytics (= 5.1.0)
@@ -41,6 +43,7 @@ PODS:
     - FirebaseInstanceID (~> 3.0)
     - GoogleUtilities/Reachability (~> 5.2)
     - Protobuf (~> 3.1)
+  - FittedSheets (1.0.0)
   - GoogleAppMeasurement (5.1.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 5.2.0)
     - GoogleUtilities/MethodSwizzler (~> 5.2.0)
@@ -52,6 +55,12 @@ PODS:
   - GoogleMaps/Base (2.7.0)
   - GoogleMaps/Maps (2.7.0):
     - GoogleMaps/Base
+  - GooglePlacePicker (2.7.0):
+    - GoogleMaps (= 2.7.0)
+    - GooglePlaces (= 2.7.0)
+  - GooglePlaces (2.7.0):
+    - GoogleMaps/Base (= 2.7.0)
+  - GooglePlacesSearchController (0.2.1)
   - GoogleUtilities/AppDelegateSwizzler (5.2.2):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -78,38 +87,52 @@ PODS:
   - SVProgressHUD (2.2.5)
   - SwiftHash (2.0.1)
   - SwiftyJSON (4.1.0)
+  - TinyConstraints (3.1.1)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - CRGradientNavigationBar
   - DatePickerDialog
   - DLRadioButton (~> 1.4)
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
+  - FeelingsView
   - Firebase/Core
   - Firebase/Messaging
+  - FittedSheets
   - GoogleMaps
+  - GooglePlacePicker
+  - GooglePlaces
+  - GooglePlacesSearchController
   - MaterialComponents/ShadowElevations
   - SVProgressHUD
   - SwiftHash
   - SwiftyJSON (~> 4.0)
+  - TinyConstraints
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bolts
+    - CRGradientNavigationBar
     - DatePickerDialog
     - DLRadioButton
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
+    - FeelingsView
     - Firebase
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseInstanceID
     - FirebaseMessaging
+    - FittedSheets
     - GoogleAppMeasurement
     - GoogleMaps
+    - GooglePlacePicker
+    - GooglePlaces
+    - GooglePlacesSearchController
     - GoogleUtilities
     - MaterialComponents
     - nanopb
@@ -117,22 +140,29 @@ SPEC REPOS:
     - SVProgressHUD
     - SwiftHash
     - SwiftyJSON
+    - TinyConstraints
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CRGradientNavigationBar: ee6fa0398e3d64af32a792b63336e094bb55402e
   DatePickerDialog: 5e1c24d9fe6506cd45dbc573eed7b0a251b1c09d
   DLRadioButton: d7c4e225ed0e8013cef7be61455230c7557ad7c1
   FBSDKCoreKit: 1a5b2e3ceb5ca827a53c54aa5f4a3480efff80d2
   FBSDKLoginKit: 00a3d65d1226852f9d76dcddff01981e5e6d9c38
   FBSDKShareKit: 2ddbd7e6432023fff957af62e23a3671b84319f7
+  FeelingsView: 7ba1f8d2e087ed908b99bfde175e6e04ab1ed649
   Firebase: 8c957f9cb3852b519180fb378801b7eeeba4d288
   FirebaseAnalytics: d4a260c114aec0d765ab5b9c404ac63de1d29381
   FirebaseCore: ee4b35cf8c8e781da296cc7c15125e4608bb954d
   FirebaseInstanceID: 8cd2c6cfe7b9ab65ce7e248f6da7f26f6775b9be
   FirebaseMessaging: f67b3719f520ee200da0e20ce577fe2bce0c01d0
+  FittedSheets: 15ee09759706a1539b08c4ae9752b035d67d3c0e
   GoogleAppMeasurement: e785bdb86d3d280abc778156cec323a975f11d1d
   GoogleMaps: f79af95cb24d869457b1f961c93d3ce8b2f3b848
+  GooglePlacePicker: 59ea44db173c58486ad6123993e81feefcbce9c3
+  GooglePlaces: 3d06e6c99654545b4738ce49648745779c25f2ef
+  GooglePlacesSearchController: e53b61b7497cf40cb18ec296b1d3314c11c0a1c0
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   MaterialComponents: 9ba063439c19dd92b3489bc2c4e428f2abaced65
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
@@ -140,7 +170,8 @@ SPEC CHECKSUMS:
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftHash: c805de5a434eacfa0dac7210745a50c55d7fe33d
   SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
+  TinyConstraints: c15ce864e9ef87dfd18ee3bd746d510a38d84198
 
-PODFILE CHECKSUM: e9b1ef5239fad26c28ca173938e1a21ac223aee1
+PODFILE CHECKSUM: f5c34027319d0691f779f81ac37eb5c82c1028ed
 
 COCOAPODS: 1.5.3

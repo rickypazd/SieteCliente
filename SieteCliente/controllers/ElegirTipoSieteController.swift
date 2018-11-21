@@ -11,19 +11,30 @@ class ElegirTipoSieteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.barTintColor = UIColor(red: 142, green: 85, blue: 131)
-        
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 119/255, green: 65/255, blue: 185/255, alpha: 1))
+        colors.append(UIColor(red: 244/255, green: 53/255, blue: 69/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        navigationItem.title = "Tipos de siete"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
-        
+         
         let ancho = contentView.bounds.size.width / 2
-        let alto = contentView.bounds.size.height / 2
-        
+      
+        var alto = contentView.bounds.size.height / 2
+          alto -= alto*0.15
         btnSiete.frame = CGRect(x: 0, y: 0, width: ancho, height: alto)
         btnSuperSiete.frame = CGRect(x: ancho, y: 0, width: ancho, height: alto)
         btnSieteMaravilla.frame = CGRect(x: 0, y: alto, width: ancho, height: alto)
         btnSieteToGo.frame = CGRect(x: ancho, y: alto, width: ancho, height: alto)
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -45,7 +56,9 @@ class ElegirTipoSieteController: UIViewController {
 //    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "TipoSieteSeleccionado" {
+           
             let destinoVC = segue.destination as! PrincipalController
             destinoVC.tipoCarrera = sender as! Int
         }

@@ -10,6 +10,8 @@ class PidiendoSieteController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+self.navigationController?.isNavigationBarHidden = true
+        self.tabBarController?.tabBar.isHidden = true
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
         
         actualizarToken()
@@ -18,7 +20,14 @@ class PidiendoSieteController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        self.navigationController?.isNavigationBarHidden = true
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        self.navigationController?.isNavigationBarHidden = false
+    }
     func actualizarToken() -> Void {
         if json.isEmpty {
             return
@@ -76,7 +85,17 @@ class PidiendoSieteController: UIViewController {
                 
                 if let resp = String(data: response.data!, encoding: .utf8) {
                     if resp == "falso" {
-                        Util.mostrarAlerta(titulo: "", mensaje: "No se encontró un conductor disponible")
+                      //  Util.mostrarAlerta(titulo: "", mensaje: "")
+                        let alerta = UIAlertController(title: "", message: "No se encontró un conductor disponible", preferredStyle: .alert)
+                        alerta.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                            alerta.dismiss(animated: true, completion: nil)
+                            self.navigationController?.isNavigationBarHidden = false
+                            self.tabBarController?.tabBar.isHidden = false;
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                        
+                        UIApplication.topViewController()?.present(alerta, animated: true, completion: nil)
+                        
                     } else if let datos = resp.data(using: .utf8, allowLossyConversion: false) {
                         /* fecha_pedido, id_usuario, latinicial, detalle_costo, tipo_pago, turno: id_conductor id_vehiculo estado id tipo fecha_inicio, distancia, lnginicial, lngfinal, costo_final, estado, id, id_turno, latfinal, fecha_confirmacion, id_tipo */
                         let objCarrera = try! JSON(data: datos)
@@ -115,7 +134,16 @@ class PidiendoSieteController: UIViewController {
                 
                 if let resp = String(data: response.data!, encoding: .utf8) {
                     if resp == "falso" {
-                        Util.mostrarAlerta(titulo: "", mensaje: "No se encontró un conductor disponible")
+                        //  Util.mostrarAlerta(titulo: "", mensaje: "")
+                        let alerta = UIAlertController(title: "", message: "No se encontró un conductor disponible", preferredStyle: .alert)
+                        alerta.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
+                            alerta.dismiss(animated: true, completion: nil)
+                            self.navigationController?.isNavigationBarHidden = false
+                            self.tabBarController?.tabBar.isHidden = false;
+                            self.navigationController?.popViewController(animated: true)
+                        }))
+                        
+                        UIApplication.topViewController()?.present(alerta, animated: true, completion: nil)
                     } else if let datos = resp.data(using: .utf8, allowLossyConversion: false) {
                         /* fecha_pedido, id_usuario, latinicial, detalle_costo, tipo_pago, turno: id_conductor id_vehiculo estado id tipo fecha_inicio, distancia, lnginicial, lngfinal, costo_final, estado, id, id_turno, latfinal, fecha_confirmacion, id_tipo */
                         let objCarrera = try! JSON(data: datos)

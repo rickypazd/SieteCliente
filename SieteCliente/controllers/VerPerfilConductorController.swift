@@ -6,19 +6,55 @@ import UIKit
 class VerPerfilConductorController: UIViewController {
 
     @IBOutlet weak var imgPerfil: UIImageView!
-    @IBOutlet weak var lbNombre: UILabel!
-    @IBOutlet weak var lbVehiculo: UILabel!
-    @IBOutlet weak var lbPlaca: UILabel!
-    @IBOutlet weak var lbViajesCompletados: UILabel!
+    @IBOutlet weak var lbNombre: UILabel!{
+        didSet{
+            
+            lbNombre.backgroundColor = UIColor.init(red: 146, green: 58, blue: 237)
+            lbNombre.layer.masksToBounds = true
+            lbNombre.layer.cornerRadius = 10
+            lbNombre.textColor = UIColor.white
+        }
+    }
+    @IBOutlet weak var lbVehiculo: UILabel!{
+        didSet{
+            lbVehiculo.backgroundColor = UIColor.init(red: 146, green: 58, blue: 237)
+            lbVehiculo.layer.masksToBounds = true
+            lbVehiculo.layer.cornerRadius = 10
+            lbVehiculo.textColor = UIColor.white
+        }
+    }
+    @IBOutlet weak var lbPlaca: UILabel!{
+        didSet{
+            lbPlaca.backgroundColor = UIColor.init(red: 146, green: 58, blue: 237)
+            lbPlaca.layer.masksToBounds = true
+            lbPlaca.layer.cornerRadius = 10
+            lbPlaca.textColor = UIColor.white
+        }
+    }
+    @IBOutlet weak var lbViajesCompletados: UILabel!{
+        didSet{
+            
+        }
+    }
+    
+    @IBOutlet weak var comentario: UILabel!{
+        didSet{
+            comentario.backgroundColor = UIColor.init(red: 255, green: 255, blue: 255,a:0.2)
+            comentario.layer.masksToBounds = true
+            comentario.layer.cornerRadius = 10
+            comentario.textColor = UIColor.white
+
+        }
+    }
     
     var conductor:JSON = []
     var idCarrera:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        //self.setNavigationBar()
         // todo creo que seria mejor que esto vaya en esperando conductor
-        obtenerPerfilConductor()
+       obtenerPerfilConductor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,7 +98,7 @@ class VerPerfilConductorController: UIViewController {
                 if !respuesta["foto_perfil"].string!.isEmpty {
                     self.obtenerFotoDePerfil(url: respuesta["foto_perfil"].string!)
                 }
-                
+                self.comentario.text = respuesta["comentario"].string
                 self.lbNombre.text = "\(nombreConductor) \(apellidoPa) \(apellidoMa)"
                 self.lbVehiculo.text = "\(marca)-\(modelo)"
                 self.lbPlaca.text = placa

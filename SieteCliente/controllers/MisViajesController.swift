@@ -4,7 +4,7 @@ import UIKit
 import MapKit
 import SVProgressHUD
 import SwiftyJSON
-
+import QuartzCore
 class MisViajesController : UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
@@ -12,13 +12,18 @@ class MisViajesController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 119/255, green: 65/255, blue: 185/255, alpha: 1))
+        colors.append(UIColor(red: 244/255, green: 53/255, blue: 69/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+          navigationItem.title = "Viajes"
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.show(withStatus: "Cargando tu historial de viajes...")
-
+        let usuario = Util.getUsuario()
+        let id = usuario?["id"].stringValue
         let parametros: Parameters = [
             "evento": "get_mis_viajes",
-            "id": Util.getUsuario()!["id"]
+            "id": id ?? "0"
         ]
 
         Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON {
@@ -80,7 +85,7 @@ class MisViajesController : UIViewController {
             completionHandler(direccion)
         }
     }
-    
+  
 }
 
 extension MisViajesController : UITableViewDataSource, UITableViewDelegate {
@@ -102,6 +107,10 @@ extension MisViajesController : UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
          // dismiss(animated: true, completion: nil)
+        
+        let controllerdst = DetalleViajeController()
+        controllerdst.selected=viajes[indexPath.section]
+        self.navigationController?.pushViewController(controllerdst, animated: true)
         return false
     }
     
@@ -112,10 +121,12 @@ extension MisViajesController : UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! MisViajesTableViewCell
         
-        let indice = indexPath.row
+        let indice = indexPath.section
         let viaje = viajes[indice]
         
-        cell.lbFecha.text = viaje["fecha_pedido"].string!
+        let fecha = viaje["fecha_pedido"].string!
+        let index = fecha.index(fecha.startIndex, offsetBy: 16)
+        cell.lbFecha.text = String(fecha[..<index])
         cell.lbVehiculo.text = viaje["marca"].string
         
         let estado = viaje["estado"].int

@@ -4,6 +4,10 @@ class OpcionesController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 119/255, green: 65/255, blue: 185/255, alpha: 1))
+        colors.append(UIColor(red: 244/255, green: 53/255, blue: 69/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
 
         navigationItem.title = "Opciones"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)

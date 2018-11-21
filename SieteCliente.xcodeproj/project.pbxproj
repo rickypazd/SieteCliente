@@ -11,6 +11,11 @@
 		C805BC7A2179FF0800CFCCE3 /* HistorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC792179FF0800CFCCE3 /* HistorialController.swift */; };
 		C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */; };
 		C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */; };
+		C80B6291219FAE0E000A7B75 /* DetalleViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B6290219FAE0E000A7B75 /* DetalleViajeController.swift */; };
+		C80B629321A0222A000A7B75 /* ImageAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B629221A0222A000A7B75 /* ImageAttachment.swift */; };
+		C80B629721A0273E000A7B75 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B629621A0273E000A7B75 /* UIView.swift */; };
+		C80B629921A02AA9000A7B75 /* CAGradientLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B629821A02AA9000A7B75 /* CAGradientLayer.swift */; };
+		C80B629B21A02C19000A7B75 /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = C80B629A21A02C19000A7B75 /* UINavigationBar.swift */; };
 		C81BF7202181756900C515F3 /* OpcionesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81BF71F2181756900C515F3 /* OpcionesController.swift */; };
 		C8275790213ECB86002968AF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C827578F213ECB86002968AF /* RoundButton.swift */; };
 		C8275792213ECEFE002968AF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8275791213ECEFE002968AF /* UIColor.swift */; };
@@ -21,6 +26,7 @@
 		C8354DA7211B409C001D9007 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA5211B409C001D9007 /* LaunchScreen.storyboard */; };
 		C8354DB1211B46F1001D9007 /* RegistrarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354DB0211B46F1001D9007 /* RegistrarController.swift */; };
 		C8354DB3211B4712001D9007 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354DB2211B4712001D9007 /* LoginController.swift */; };
+		C83898C921A2D5B500D121C5 /* FeelingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C83898C821A2D5B500D121C5 /* FeelingsView.swift */; };
 		C840E05A215D10D8001FB80A /* CancelarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C840E059215D10D8001FB80A /* CancelarViajeController.swift */; };
 		C8419650214DA47D00C6ED24 /* CalcularRutaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C841964F214DA47D00C6ED24 /* CalcularRutaController.swift */; };
 		C842D71821480D9A00F89F52 /* TransaccionesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C842D71721480D9A00F89F52 /* TransaccionesController.swift */; };
@@ -42,6 +48,7 @@
 		C8CF4466218B8804007BC3FF /* PedidoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4465218B8804007BC3FF /* PedidoTableViewCell.swift */; };
 		C8CF4468218C4005007BC3FF /* EsperandoConductorToGoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */; };
 		C8D1FF2C2121B84D0099D6EF /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D1FF2B2121B84D0099D6EF /* MainNavigationController.swift */; };
+		C8E8F43A21A556500066869B /* UICustonStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8E8F43921A556500066869B /* UICustonStack.swift */; };
 		C8ED75882174AE81009126E1 /* IniciarSesionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED75872174AE81009126E1 /* IniciarSesionController.swift */; };
 		C8ED758A2174C390009126E1 /* ElegirTipoSieteController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED75892174C390009126E1 /* ElegirTipoSieteController.swift */; };
 		C8ED75902174EA8D009126E1 /* TiposViajeCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ED758F2174EA8D009126E1 /* TiposViajeCollectionCell.swift */; };
@@ -60,6 +67,11 @@
 		C805BC792179FF0800CFCCE3 /* HistorialController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialController.swift; sourceTree = "<group>"; };
 		C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorialTableViewCell.swift; sourceTree = "<group>"; };
 		C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViajesController.swift; sourceTree = "<group>"; };
+		C80B6290219FAE0E000A7B75 /* DetalleViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetalleViajeController.swift; sourceTree = "<group>"; };
+		C80B629221A0222A000A7B75 /* ImageAttachment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageAttachment.swift; sourceTree = "<group>"; };
+		C80B629621A0273E000A7B75 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		C80B629821A02AA9000A7B75 /* CAGradientLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CAGradientLayer.swift; sourceTree = "<group>"; };
+		C80B629A21A02C19000A7B75 /* UINavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		C81BF71F2181756900C515F3 /* OpcionesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpcionesController.swift; sourceTree = "<group>"; };
 		C827578F213ECB86002968AF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		C8275791213ECEFE002968AF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
@@ -72,6 +84,7 @@
 		C8354DA8211B409C001D9007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8354DB0211B46F1001D9007 /* RegistrarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarController.swift; sourceTree = "<group>"; };
 		C8354DB2211B4712001D9007 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		C83898C821A2D5B500D121C5 /* FeelingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeelingsView.swift; sourceTree = "<group>"; };
 		C840E059215D10D8001FB80A /* CancelarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelarViajeController.swift; sourceTree = "<group>"; };
 		C841964F214DA47D00C6ED24 /* CalcularRutaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcularRutaController.swift; sourceTree = "<group>"; };
 		C842D71721480D9A00F89F52 /* TransaccionesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaccionesController.swift; sourceTree = "<group>"; };
@@ -94,6 +107,7 @@
 		C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperandoConductorToGoController.swift; sourceTree = "<group>"; };
 		C8D1FF2B2121B84D0099D6EF /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		C8D2DB9D2188E0F50014630A /* SieteCliente.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SieteCliente.entitlements; sourceTree = "<group>"; };
+		C8E8F43921A556500066869B /* UICustonStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustonStack.swift; sourceTree = "<group>"; };
 		C8ED75872174AE81009126E1 /* IniciarSesionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionController.swift; sourceTree = "<group>"; };
 		C8ED75892174C390009126E1 /* ElegirTipoSieteController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElegirTipoSieteController.swift; sourceTree = "<group>"; };
 		C8ED758F2174EA8D009126E1 /* TiposViajeCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiposViajeCollectionCell.swift; sourceTree = "<group>"; };
@@ -136,6 +150,10 @@
 				C8275793213ED06E002968AF /* UICustomView.swift */,
 				C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */,
 				C8CCEAD621469C3D00063515 /* CustomLabel.swift */,
+				C80B629621A0273E000A7B75 /* UIView.swift */,
+				C80B629821A02AA9000A7B75 /* CAGradientLayer.swift */,
+				C80B629A21A02C19000A7B75 /* UINavigationBar.swift */,
+				C8E8F43921A556500066869B /* UICustonStack.swift */,
 			);
 			path = design;
 			sourceTree = "<group>";
@@ -205,6 +223,7 @@
 				C8CF4461218B7031007BC3FF /* SieteToGoController.swift */,
 				C8CF4463218B8720007BC3FF /* PedidosToGoController.swift */,
 				C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */,
+				C80B6290219FAE0E000A7B75 /* DetalleViajeController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -226,7 +245,9 @@
 		C8AE8057211DDC03005A132E /* utiles */ = {
 			isa = PBXGroup;
 			children = (
+				C83898C821A2D5B500D121C5 /* FeelingsView.swift */,
 				C8AE8058211DDC10005A132E /* Util.swift */,
+				C80B629221A0222A000A7B75 /* ImageAttachment.swift */,
 			);
 			path = utiles;
 			sourceTree = "<group>";
@@ -341,10 +362,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-resources.sh",
 				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlacePicker/Frameworks/GooglePlacePicker.framework/Resources/GooglePlacePicker.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlacePicker.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -360,34 +385,44 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SieteCliente/Pods-SieteCliente-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/CRGradientNavigationBar/CRGradientNavigationBar.framework",
 				"${BUILT_PRODUCTS_DIR}/DLRadioButton/DLRadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FeelingsView/FeelingsView.framework",
+				"${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework",
+				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TinyConstraints/TinyConstraints.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRGradientNavigationBar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DLRadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeelingsView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FittedSheets.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TinyConstraints.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -411,18 +446,24 @@
 				C858868D21271CDA0045100F /* MisViajesTableViewCell.swift in Sources */,
 				C86BD926216B9D1F0094584C /* CalificarViajeController.swift in Sources */,
 				C8CF4468218C4005007BC3FF /* EsperandoConductorToGoController.swift in Sources */,
+				C83898C921A2D5B500D121C5 /* FeelingsView.swift in Sources */,
 				C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */,
 				C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */,
 				C8354D9D211B409B001D9007 /* AppDelegate.swift in Sources */,
+				C80B629321A0222A000A7B75 /* ImageAttachment.swift in Sources */,
 				C840E05A215D10D8001FB80A /* CancelarViajeController.swift in Sources */,
+				C8E8F43A21A556500066869B /* UICustonStack.swift in Sources */,
 				C8436ECD2126FF0300A3E67E /* PerfilClienteController.swift in Sources */,
 				C8A3ABB721231307001F1214 /* FinalizarRegistroController.swift in Sources */,
 				C8F2F7F1214E996100383C2E /* EsperandoConductorController.swift in Sources */,
 				C805BC7A2179FF0800CFCCE3 /* HistorialController.swift in Sources */,
 				C8CCEAD721469C3D00063515 /* CustomLabel.swift in Sources */,
 				C8AE8059211DDC10005A132E /* Util.swift in Sources */,
+				C80B6291219FAE0E000A7B75 /* DetalleViajeController.swift in Sources */,
 				C8CF4466218B8804007BC3FF /* PedidoTableViewCell.swift in Sources */,
 				C84FCCB3218A2606004A41DB /* ChatEmisorCell.swift in Sources */,
+				C80B629921A02AA9000A7B75 /* CAGradientLayer.swift in Sources */,
+				C80B629B21A02C19000A7B75 /* UINavigationBar.swift in Sources */,
 				C84FCCB1218A06E5004A41DB /* ChatCell.swift in Sources */,
 				C8ED75882174AE81009126E1 /* IniciarSesionController.swift in Sources */,
 				C8354DB1211B46F1001D9007 /* RegistrarController.swift in Sources */,
@@ -436,6 +477,7 @@
 				C8275792213ECEFE002968AF /* UIColor.swift in Sources */,
 				C8CF4462218B7031007BC3FF /* SieteToGoController.swift in Sources */,
 				C8354DB3211B4712001D9007 /* LoginController.swift in Sources */,
+				C80B629721A0273E000A7B75 /* UIView.swift in Sources */,
 				C8275790213ECB86002968AF /* RoundButton.swift in Sources */,
 				C8FE33A721247C2200DCA4E6 /* TabBarMainController.swift in Sources */,
 				C8419650214DA47D00C6ED24 /* CalcularRutaController.swift in Sources */,
@@ -597,7 +639,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -618,7 +660,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -5,6 +5,13 @@ import UIKit
 import SVProgressHUD
 import SwiftyJSON
 
+extension DLRadioButton {
+    func setSelected(_ selected: Bool) {
+        if self.isSelected != selected {
+            self.sendActions(for: .touchUpInside)
+        }
+    }
+}
 class CalcularRutaController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var imgTipoVehiculo: UIImageView!
@@ -42,7 +49,7 @@ class CalcularRutaController: UIViewController, CLLocationManagerDelegate, GMSMa
         locationManager.distanceFilter = 50
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
-        
+        radioPagoEfectivo.setSelected(true)
         if !json.isEmpty {
             navigationItem.title = Util.getTipoCarrera(tipo: json["tipo"].int!)
         }
@@ -60,38 +67,38 @@ class CalcularRutaController: UIViewController, CLLocationManagerDelegate, GMSMa
     func actualizarImagenTipoCarrera() {
         switch tipoCarrera {
         case Util.ESTANDAR:
-            imgTipoVehiculo.image = UIImage(named: "background_siete_estadar")
+            imgTipoVehiculo.image = UIImage(named: "icon_siete_cr")
             break
             
         case Util.TIPO_4X4:
-            imgTipoVehiculo.image = UIImage(named: "background_siete_4x4")
+            imgTipoVehiculo.image = UIImage(named: "icon_4x4_cr")
             break
             
         case Util.CAMIONETA:
-            imgTipoVehiculo.image = UIImage(named: "background_siete_camioneta")
+            imgTipoVehiculo.image = UIImage(named: "icon_camioneta_cr")
             break
             
         case Util.TIPO_3_FILAS:
-            imgTipoVehiculo.image = UIImage(named: "backgroud_tres_filas")
+            imgTipoVehiculo.image = UIImage(named: "icon_4filas_cr")
             break
             
         case Util.SUPER_7:
-            imgTipoVehiculo.image = UIImage(named: "background_super_siete")
+            imgTipoVehiculo.image = UIImage(named: "icon_super_siete_cr")
             break
             
         case Util.MARAVILLA:
-            imgTipoVehiculo.image = UIImage(named: "background_siete_maravilla")
+            imgTipoVehiculo.image = UIImage(named: "icon_maravilla_cr")
             break
             
         case Util.TO_GO:
-            imgTipoVehiculo.image = UIImage(named: "background_togo")
+            imgTipoVehiculo.image = UIImage(named: "icon_togo_cr")
             break
             
         default:
             return
         }
         
-        imgTipoVehiculo.contentMode = UIViewContentMode.scaleAspectFit
+        imgTipoVehiculo.contentMode = UIView.ContentMode.scaleAspectFit
     }
     
     func obtenerCostoDeCarrera() -> Void {
@@ -162,11 +169,21 @@ class CalcularRutaController: UIViewController, CLLocationManagerDelegate, GMSMa
             let marker = GMSMarker()
             marker.position = CLLocationCoordinate2D(latitude: json["latfinal"].double!, longitude: json["lngfinal"].double!)
             marker.map = mapView
+            let marker2 = GMSMarker()
+            marker2.position = CLLocationCoordinate2D(latitude: json["latinicio"].double!, longitude: json["lnginicio"].double!)
+            marker2.map = mapView
+            
+          
+            var bounds = GMSCoordinateBounds()
+            bounds = bounds.includingCoordinate(marker.position)
+            bounds = bounds.includingCoordinate(marker2.position)
+            mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
+            
         }
         
-        mapView.animate(to: camera)
+        //mapView.animate(to: camera)
     }
-    
+ 
     @IBAction func confirmarCarrera(_ sender: Any) {
         // validación para obtener los creditos del usuario
         obtenerPerfilUsuario()

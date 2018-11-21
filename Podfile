@@ -1,4 +1,4 @@
-platform :ios, '9.0'
+platform :ios, '10.0'
 
 target 'SieteCliente' do
   use_frameworks!
@@ -10,11 +10,18 @@ pod 'SwiftyJSON', '~> 4.0'
 pod 'SwiftHash'
 pod 'DatePickerDialog'
 pod 'GoogleMaps'
+pod 'GooglePlaces'
+pod 'GooglePlacePicker'
+pod 'GooglePlacesSearchController'
 pod 'Firebase/Core'
 pod 'Firebase/Messaging'
 pod 'MaterialComponents/ShadowElevations'
 pod 'FBSDKCoreKit'
 pod 'FBSDKShareKit'
 pod 'FBSDKLoginKit'
+pod 'TinyConstraints'
+pod 'CRGradientNavigationBar'
+pod 'FittedSheets'
+pod 'FeelingsView'
 
 end

@@ -31,11 +31,15 @@ class ChatController: UIViewController {
     }
     
     func observarCuandoElTecladoSeMuestre() {
-        NotificationCenter.default.addObserver(self, selector: #selector(elTecladoSeEstaMostrando), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(UIView.keyboardWillChange(_:)), name:
+//            UIApplication.keyboardWillChangeFrameNotification
+//            , object: nil)
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(elTecladoSeEstaMostrando(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
     }
     
     @objc func elTecladoSeEstaMostrando(notification: NSNotification) {
-        let keyboardFrame: NSValue = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)!
+        let keyboardFrame: NSValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)!
         
         let keyboardRectangle = keyboardFrame.cgRectValue
         let keyboardHeight = keyboardRectangle.height
@@ -45,7 +49,8 @@ class ChatController: UIViewController {
     }
     
     func observarCuandoElTecladoSeOculte() {
-        NotificationCenter.default.addObserver(self, selector: #selector(elTecladoSeEstaOcultando), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+          let center2 = NotificationCenter.default
+        center2.addObserver(self, selector: #selector(elTecladoSeEstaOcultando(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @objc func elTecladoSeEstaOcultando(notification: NSNotification) {

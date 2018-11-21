@@ -47,7 +47,7 @@ class CancelarViajeController: UIViewController {
                     if resp == "exito" {
                         self.hiloCarrera.invalidate()
                         
-                        let alerta = UIAlertController(title: "Listo!", message: "Viaje cancelado.", preferredStyle: UIAlertControllerStyle.alert)
+                        let alerta = UIAlertController(title: "Listo!", message: "Viaje cancelado.", preferredStyle: UIAlertController.Style.alert)
                         let accionOk = UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                             alerta.dismiss(animated: true, completion: nil)
                             

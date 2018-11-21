@@ -3,27 +3,153 @@ import GoogleMaps
 import Alamofire
 import SwiftyJSON
 
-class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
+protocol controlsInput {
+    func setJson(obj: JSON)
+}
+extension UITextField {
+    func setIcon(_ image: UIImage) {
+        let iconView = UIImageView(frame:
+            CGRect(x: 10, y: 5, width: 20, height: 20))
+        iconView.image = image
+        let iconContainerView: UIView = UIView(frame:
+            CGRect(x: 20, y: 0, width: 30, height: 30))
+        iconContainerView.addSubview(iconView)
+        leftView = iconContainerView
+        leftViewMode = .always
+    }
+}
+
+
+
+class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UITextFieldDelegate, controlsInput {
+   
+   
     
+  
     @IBOutlet weak var contentView: UIView!
     var locationManager = CLLocationManager()
     var currentLocation: CLLocation?
     var mapView: GMSMapView!
     var zoomLevel: Float = 15.0
     let geocoder = GMSGeocoder()
-
-    @IBOutlet weak var tfInicio: UITextField!
-    @IBOutlet weak var tfDestino: UITextField!
+    var ubic_inicial: JSON = ["direccion": "", "lat": 0, "lng": 0]
+    var ubic_final: JSON = ["direccion": "", "lat": 0, "lng": 0]
+    var objDetalle: JSON!
+    @IBOutlet weak var tfInicio: UITextField! {
+        didSet {
+//            tfInicio.tintColor = UIColor.lightGray
+            tfInicio.setIcon(#imageLiteral(resourceName: "icon_pointer_map"))
+            
+        }
+    }
+    @IBOutlet weak var tfDestino: UITextField!{
+        didSet {
+//            tfDestino.tintColor = UIColor.lightGray
+            tfDestino.setIcon(#imageLiteral(resourceName: "icon_pointer2_map"))
+            
+        }
+    }
+    
+    var tselect: UITextField!
+    var objSelect: JSON!
+    var inselect: Int = 0
+    var entro: Bool = false
+    var listo: Bool = false
+    var presListo: Bool = false
     var marcadorInicio = GMSMarker()
     var marcadorDestino = GMSMarker()
     var polyline = GMSPolyline(path: GMSPath()) // la ruta dibujada en el mapa
     
+    
     // lo que recibe de ElegirTipoSiete
     var tipoCarrera: Int = 0
     
+    @IBAction func editing(_ sender: UITextField!) {
+        self.tselect = sender
+        self.objSelect = self.ubic_inicial
+        self.inselect = 0
+    }
+    @IBAction func editingfinal(_ sender: UITextField!) {
+        self.tselect = sender
+        self.objSelect = self.ubic_final
+        self.inselect = 1
+    }
     @IBOutlet weak var tiposCarrerasCollectionView: UICollectionView!
+    
+    func setJson(obj: JSON) {
+        if self.inselect == 1 {
+            self.ubic_final = obj
+            self.btn_accion.isHidden = true
+            self.confirmar_pedido()
+        }else if self.inselect == 0{
+            self.ubic_inicial = obj
+            self.btn_accion.isHidden = true
+            self.confirmar_pedido()
+        }
+    }
     let tiposViajes = ["Estándar", "4x4", "Camioneta", "3 filas"]
     
+    let imgMarker: UIImageView = {
+        let images = UIImageView()
+        images.image = #imageLiteral(resourceName: "pointer_map")
+        //images.backgroundColor = .red
+        
+        return images
+    }()
+    
+    let btn_accion : UIButton = {
+        let buton = UIButton()
+        buton.setTitle("Listo", for: .normal)
+        buton.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        buton.backgroundColor = UIColor.init(red: 146, green: 58, blue: 237)
+        buton.layer.masksToBounds = true
+        buton.layer.cornerRadius = 10
+        buton.setTitleColor(.white, for: .normal)
+        return buton
+    }()
+    
+    let btn_maravilla : UIButton = {
+        let buton = UIButton()
+        buton.setImage(UIImage(named: "background_siete_maravilla"), for: UIControl.State.normal)
+        buton.tag = Util.MARAVILLA
+        return buton
+    }()
+    let btn_super : UIButton = {
+        let buton = UIButton()
+        buton.setImage(UIImage(named: "background_super_siete"), for: UIControl.State.normal)
+        buton.tag = Util.SUPER_7
+        return buton
+    }()
+    
+
+    func addConstrains(){
+          self.view.addSubview(imgMarker)
+        imgMarker.translatesAutoresizingMaskIntoConstraints = false
+        imgMarker.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        imgMarker.heightAnchor.constraint(equalToConstant: 24).isActive = true
+                imgMarker.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        imgMarker.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -15).isActive = true
+        self.view.addSubview(btn_accion)
+        btn_accion.translatesAutoresizingMaskIntoConstraints = false
+        btn_accion.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.3).isActive = true
+        btn_accion.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        btn_accion.topAnchor.constraint(equalTo: self.imgMarker.bottomAnchor, constant: 20).isActive = true
+        btn_accion.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        self.view.addSubview(btn_maravilla)
+        btn_maravilla.translatesAutoresizingMaskIntoConstraints = false
+        btn_maravilla.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+        btn_maravilla.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        btn_maravilla.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -24).isActive = true
+        btn_maravilla.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+        
+        self.view.addSubview(btn_super)
+        btn_super.translatesAutoresizingMaskIntoConstraints = false
+        btn_super.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6).isActive = true
+        btn_super.heightAnchor.constraint(equalToConstant: 90).isActive = true
+        btn_super.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -24).isActive = true
+        btn_super.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,58 +160,130 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        addConstrains()
         
+        let tap :UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(ok_listo(sender:)))
+        tap.numberOfTapsRequired=1
+        btn_accion.addGestureRecognizer(tap)
+        
+        
+        self.tfInicio.delegate = self
+        self.tfDestino.delegate = self
+        
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: self, action:#selector(back(sender:)))
+        
+        tfInicio.layer.cornerRadius = 20
         tiposCarrerasCollectionView.dataSource = self
         self.tiposCarrerasCollectionView.backgroundColor = UIColor.clear
-        
+         self.btn_accion.isHidden = true
+         tiposCarrerasCollectionView.isHidden = true
+        btn_super.isHidden = true
+            btn_maravilla.isHidden = true
         if (tipoCarrera != Util.ESTANDAR) {
-            tiposCarrerasCollectionView.isHidden = true
+            if(tipoCarrera == Util.MARAVILLA){
+                  self.navigationItem.title = "Siete Maravilla"
+                let tapmaravilla :UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(calcular_maravilla(sender:)))
+                tapmaravilla.numberOfTapsRequired=1
+                btn_maravilla.addGestureRecognizer(tapmaravilla)
+                btn_maravilla.isHidden = false
+            }
+            if(tipoCarrera == Util.SUPER_7){
+                 self.navigationItem.title = "Super Siete"
+                let tapsuper :UITapGestureRecognizer = UITapGestureRecognizer.init(target: self, action: #selector(calcular_super(sender:)))
+                tapsuper.numberOfTapsRequired=1
+                btn_super.addGestureRecognizer(tapsuper)
+                  btn_super.isHidden = false
+            }
+           
         } else {
-            self.navigationItem.title = "Siete estándar"
+             tiposCarrerasCollectionView.isHidden = false
+            self.navigationItem.title = "Siete Estándar"
         }
     }
-    
+    @objc func back(sender: UIBarButtonItem) {
+        self.navigationController?.isNavigationBarHidden = true; self.navigationController?.popViewController(animated: true)
+    }
+   
+    @objc func ok_listo(sender: UITapGestureRecognizer){
+           self.confirmar_pedido()
+    }
+
+    @objc func calcular_maravilla(sender: UITapGestureRecognizer){
+        self.ok_calcular_ruta(tipo: Util.MARAVILLA)
+    }
+    @objc func calcular_super(sender: UITapGestureRecognizer){
+        self.ok_calcular_ruta(tipo: Util.SUPER_7)
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let location: CLLocation = locations.last!
+        if !entro {
+            self.entro = true
+            self.listo = false
+            let location: CLLocation = locations.last!
+            let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
+            mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
+            mapView.settings.myLocationButton = true
+            mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            mapView.isMyLocationEnabled = true
+            mapView.delegate = self
+            
+            contentView.addSubview( mapView )
+            
+            self.ubic_inicial["lat"].double = Double(location.coordinate.latitude )
+            self.ubic_inicial["lng"].double = Double(location.coordinate.longitude )
+            self.ubic_inicial["direccion"].string = "nil"
+            obtenerDireccion(latitud: location.coordinate.latitude, longitud: location.coordinate.longitude, completionHandler: { direccion in
+                self.ubic_inicial["direccion"].string = direccion
+                self.ubic_inicial["lat"].double = location.coordinate.latitude
+                self.ubic_inicial["lng"].double = location.coordinate.longitude
+                self.tfInicio.text = direccion
+                self.tfDestino.becomeFirstResponder()
+                self.tselect = self.tfDestino!
+                self.objSelect = self.ubic_final
+                self.inselect = 1
+                
+            })
+            
+            mapView.animate(to: camera)
+        }
         
-        let camera = GMSCameraPosition.camera(withLatitude: location.coordinate.latitude, longitude: location.coordinate.longitude, zoom: zoomLevel)
-        mapView = GMSMapView.map(withFrame: view.bounds, camera: camera)
-        mapView.settings.myLocationButton = true
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        mapView.isMyLocationEnabled = true
-        mapView.delegate = self
-        
-        contentView.addSubview( mapView )
-        
-        let marker = GMSMarker()
-        marker.position = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-        obtenerDireccion(latitud: location.coordinate.latitude, longitud: location.coordinate.longitude, completionHandler: { direccion in
-            marker.snippet = direccion
-            self.tfInicio.text = direccion
-        })
-        
-        mapView.animate(to: camera)
     }
     
-    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {        geocoder.reverseGeocodeCoordinate(position.target) { (response, error) in
-            guard error == nil else {
-                return
-            }
-            
-            if let result = response?.firstResult() {
+    func mapView(_ mapView: GMSMapView, idleAt position: GMSCameraPosition) {
+        if !listo {
+            self.listo = true
+        } else {
+            if self.tselect != nil {
                 
-                        self.marcadorDestino.title = result.lines?[0]
-                        self.marcadorDestino.map = mapView
-                        self.tfDestino.text = result.lines?[0]
+                if self.inselect == 1 {
+                    self.ubic_final["lat"].double = position.target.latitude
+                    self.ubic_final["lng"].double = position.target.longitude
+                    self.btn_accion.isHidden = false
+                }else if self.inselect == 0{
+                    self.ubic_inicial["lat"].double =  position.target.latitude
+                    self.ubic_inicial["lng"].double = position.target.longitude
+                    self.btn_accion.isHidden = false
+                }
+            geocoder.reverseGeocodeCoordinate(position.target) { (response, error) in
+                guard error == nil else {
+                    return
+                }
+                if let result = response?.firstResult() {
+                    //  self.marcadorDestino.title = result.lines?[0]
+                    // self.marcadorDestino.map = mapView
+                   self.presListo = false
+                    self.tselect.text = result.lines?[0]
                     
+                }
             }
         }
+            
+        }
+        
     }
 
     func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
-        self.marcadorDestino.position = position.target
-        self.marcadorDestino.map = mapView
+       // self.marcadorDestino.position = position.target
+       // self.marcadorDestino.map = mapView
     }
     
     @IBAction func mostrarLugaresVisitados(_ sender: UIButton) {
@@ -93,52 +291,67 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         self.performSegue(withIdentifier: "MostrarHistorial", sender: tfDestino)
     }
     
-    @IBAction func confirmarDestino(_ sender: Any) {
-        let latInicial = mapView.myLocation?.coordinate.latitude ?? -17.744559
-        let longInicial = mapView.myLocation?.coordinate.longitude ?? -63.168864
-        let latFinal = self.marcadorDestino.position.latitude
-        let longFinal = self.marcadorDestino.position.longitude
+    
+    func confirmar_pedido(){
         
-//        print("inicio \(mapView.myLocation?.coordinate.latitude), \(mapView.myLocation?.coordinate.longitude)")
-//        print("inicio \(self.marcadorDestino.position.latitude), \(self.marcadorDestino.position.longitude)")
+        let latInicial: Double =   self.ubic_inicial["lat"].double!
+        let longInicial: Double = self.ubic_inicial["lng"].double!
+        let latFinal: Double =  self.ubic_final["lat"].double!
+        let longFinal: Double = self.ubic_final["lng"].double!
+        
+        //        print("inicio \(mapView.myLocation?.coordinate.latitude), \(mapView.myLocation?.coordinate.longitude)")
+        //        print("inicio \(self.marcadorDestino.position.latitude), \(self.marcadorDestino.position.longitude)")
         
         /* de servisis a las brisas */
         /* servisis */
-//        let latInicial = -17.744559
-//        let longInicial = -63.168864
+//                let latInicial = -17.744559
+//                let longInicial = -63.168864
         
         /* las brisas */
-//        let latFinal = -17.749444
-//        let longFinal = -63.175742
+//                let latFinal = -17.749444
+//                let longFinal = -63.175742
         
         let iosApiKey = "AIzaSyD2uXL3TKoMAza8aP3q6RAozz4cL4ysnPc"
         
         let URL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(latInicial),\(longInicial)&destination=\(latFinal),\(longFinal)&key=\(iosApiKey)"
-//        let URL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(latInicial!),\(longInicial!)&destination=\(latFinal),\(longFinal)&key=\(iosApiKey)"
-//        print(URL)
+        //        let URL = "https://maps.googleapis.com/maps/api/directions/json?origin=\(latInicial!),\(longInicial!)&destination=\(latFinal),\(longFinal)&key=\(iosApiKey)"
+        //        print(URL)
+        self.mapView.clear()
+        let markerini = GMSMarker()
+        markerini.position = CLLocationCoordinate2D(latitude: latInicial, longitude: longInicial)
+        
+        markerini.map = mapView
+        let markerfin = GMSMarker()
+        markerfin.position = CLLocationCoordinate2D(latitude: latFinal, longitude: longFinal)
+        markerfin.map = mapView
+        self.listo = false
+        var bounds = GMSCoordinateBounds()
+        bounds = bounds.includingCoordinate(markerini.position)
+        bounds = bounds.includingCoordinate(markerfin.position)
+        mapView.animate(with: GMSCameraUpdate.fit(bounds, withPadding: 100))
+        
         Alamofire.request(URL).responseJSON {
             response in
             
             let respuesta = JSON(response.data!)
             
             let routes = respuesta["routes"]
-//            print(routes)
+            //            print(routes)
             
             // OVERVIEW POLYINE!!!!!
             // zvhkBptp`K]jAxCz@tC|@xLtDhCx@jCr@|Cz@SvCSrCs@jGOh@MZULKLIJIRC\\BZBNDHD^
             
             if (routes.isEmpty) {
-//                print("no hay ruta establecida")
+                //                print("no hay ruta establecida")
                 return
             }
             
-            self.mapView.clear()
             
             let path = GMSPath(fromEncodedPath: routes[0]["overview_polyline"]["points"].string!)
             self.polyline = GMSPolyline(path: path)
-
-            self.polyline.map = self.mapView
             
+            self.polyline.map = self.mapView
+            self.btn_accion.isHidden = true
             // todo crear el layout para el tipo de vehiculo
             let json:JSON = [
                 "tipo": self.tipoCarrera,
@@ -150,11 +363,19 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
                 "lngfinal": longFinal,
                 "routes": routes // la respuesta de la api de direcciones de Google
             ]
-     
-            self.performSegue(withIdentifier: "CalcularRuta", sender: json)
+            self.objDetalle = json
+            self.presListo = true
+        
         }
     }
     
+    func ok_calcular_ruta(tipo: Int){
+        if presListo {
+                self.objDetalle["tipo"].int = tipo
+                self.tipoCarrera = tipo
+                self.performSegue(withIdentifier: "CalcularRuta", sender: objDetalle)
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "CalcularRuta" {
             let destinoVC = segue.destination as! CalcularRutaController
@@ -162,7 +383,19 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
             destinoVC.json = sender as! JSON
         }else if segue.identifier == "MostrarHistorial" {
             let destinoVC = segue.destination as! HistorialController
-            destinoVC.textselecte = self.tfDestino
+            if self.inselect == 1 {
+                destinoVC.textselecte = self.tfDestino
+                destinoVC.objSelect = self.ubic_final
+                destinoVC.delegate = self
+               // self.btn_accion.isHidden = false
+            }else if self.inselect == 0{
+                destinoVC.textselecte = self.tfInicio
+                destinoVC.objSelect = self.ubic_inicial
+                destinoVC.delegate = self
+                //self.btn_accion.isHidden = false
+            }
+          
+            
 //            destinoVC.json = sender as! JSON
         }
     }
@@ -213,28 +446,28 @@ extension PrincipalController : UICollectionViewDataSource {
         
         switch tiposViajes[indexPath.row] {
         case "Estándar":
-            cell.btnImagen.setImage(UIImage(named: "background_siete_estadar"), for: UIControlState.normal)
+            cell.btnImagen.setImage(UIImage(named: "background_siete_estadar"), for: UIControl.State.normal)
             cell.btnImagen.addTarget(self, action: #selector(self.seleccionarTipoSieteEstandar(_:)), for: .touchUpInside)
             cell.btnImagen.tag = Util.ESTANDAR
             
             break
             
         case "4x4":
-            cell.btnImagen.setImage(UIImage(named: "background_siete_4x4"), for: UIControlState.normal)
+            cell.btnImagen.setImage(UIImage(named: "background_siete_4x4"), for: UIControl.State.normal)
             cell.btnImagen.addTarget(self, action: #selector(self.seleccionarTipoSieteEstandar(_:)), for: .touchUpInside)
             cell.btnImagen.tag = Util.TIPO_4X4
             
             break
             
         case "Camioneta":
-            cell.btnImagen.setImage(UIImage(named: "background_siete_camioneta"), for: UIControlState.normal)
+            cell.btnImagen.setImage(UIImage(named: "background_siete_camioneta"), for: UIControl.State.normal)
             cell.btnImagen.addTarget(self, action: #selector(self.seleccionarTipoSieteEstandar(_:)), for: .touchUpInside)
             cell.btnImagen.tag = Util.CAMIONETA
             
             break
             
         case "3 filas":
-            cell.btnImagen.setImage(UIImage(named: "backgroud_tres_filas"), for: UIControlState.normal)
+            cell.btnImagen.setImage(UIImage(named: "backgroud_tres_filas"), for: UIControl.State.normal)
             cell.btnImagen.addTarget(self, action: #selector(self.seleccionarTipoSieteEstandar(_:)), for: .touchUpInside)
             cell.btnImagen.tag = Util.TIPO_3_FILAS
             
@@ -244,7 +477,7 @@ extension PrincipalController : UICollectionViewDataSource {
             break
         }
         
-        cell.btnImagen.imageView?.contentMode = UIViewContentMode.scaleAspectFit
+        cell.btnImagen.imageView?.contentMode = UIView.ContentMode.scaleAspectFit
         
         return cell
     }
@@ -253,18 +486,22 @@ extension PrincipalController : UICollectionViewDataSource {
         switch sender.tag {
         case Util.ESTANDAR:
             self.navigationItem.title = "Siete estándar"
+            ok_calcular_ruta(tipo: Util.ESTANDAR)
             break
             
         case Util.TIPO_4X4:
             self.navigationItem.title = "Siete 4x4"
+              ok_calcular_ruta(tipo: Util.TIPO_4X4)
             break
             
         case Util.CAMIONETA:
             self.navigationItem.title = "Siete camioneta"
+             ok_calcular_ruta(tipo: Util.CAMIONETA)
             break
             
         case Util.TIPO_3_FILAS:
             self.navigationItem.title = "Siete 3 filas"
+            ok_calcular_ruta(tipo: Util.TIPO_3_FILAS)
             break
             
         default:
@@ -272,6 +509,21 @@ extension PrincipalController : UICollectionViewDataSource {
         }
         
         tipoCarrera = sender.tag
+    }
+ 
+    func textFieldDidBeginEditing(textField: UITextField!) {    //delegate method
+       print("1")
+    }
+    
+    func textFieldShouldEndEditing(textField: UITextField!) -> Bool {  //delegate method
+        print("2")
+        return false
+    }
+    
+    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        print("3")
+        return true
     }
     
 }

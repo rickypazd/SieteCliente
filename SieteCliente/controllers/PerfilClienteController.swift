@@ -21,17 +21,22 @@ class PerfilClienteController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 119/255, green: 65/255, blue: 185/255, alpha: 1))
+        colors.append(UIColor(red: 244/255, green: 53/255, blue: 69/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+        navigationItem.title = "Mi perfil"
         let usuario = Util.getUsuario()
         
         if usuario != nil {
             obtenerPerfil()
+            
+            self.lbNombre.text = usuario!["nombre"].stringValue
+            self.lbApellido.text = "\(usuario!["apellido_pa"].string!) \(usuario!["apellido_ma"].string!)"
+            self.lbTelefono.text = usuario!["telefono"].string
+            self.lbEmail.text = usuario!["correo"].string
         }
         
-        self.lbNombre.text = usuario!["nombre"].string
-        self.lbApellido.text = "\(usuario!["apellido_pa"].string!) \(usuario!["apellido_ma"].string!)"
-        self.lbTelefono.text = usuario!["telefono"].string
-        self.lbEmail.text = usuario!["correo"].string
     }
     
     func obtenerPerfil() {

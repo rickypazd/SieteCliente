@@ -4,11 +4,18 @@ import UIKit
 class PedidosToGoController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+
     var lista:JSON = []
     
+     var listaProductos: JSON!
+    var btn_productos:UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        var colors = [UIColor]()
+        colors.append(UIColor(red: 119/255, green: 65/255, blue: 185/255, alpha: 1))
+        colors.append(UIColor(red: 244/255, green: 53/255, blue: 69/255, alpha: 1))
+        navigationController?.navigationBar.setGradientBackground(colors: colors)
+
         self.lista = Util.getPedidos()!
         
         let btnAgregarPedido = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(agregarPedido))
@@ -23,6 +30,10 @@ class PedidosToGoController: UIViewController {
         mostrarAlerta(nuevoPedido: true, indice: nil)
     }
     
+    @IBAction func addproducto(_ sender: Any) {
+        mostrarAlerta(nuevoPedido: true, indice: nil)
+
+    }
     func mostrarAlerta(nuevoPedido:Bool, indice:Int?) {
         let alerta = UIAlertController(title: nuevoPedido ? "Agregar pedido" : "Editar pedido", message: "", preferredStyle: .alert)
         
@@ -71,7 +82,8 @@ class PedidosToGoController: UIViewController {
 
         lista.arrayObject?.append(nuevoItem)
         Util.setPedidos(pedidos: lista.arrayObject)
-
+        self.btn_productos.setTitle("Productos ( "+String(lista.count)+" )", for: .normal)
+        self.listaProductos = lista
         tableView.reloadData()
     }
     
@@ -84,7 +96,8 @@ class PedidosToGoController: UIViewController {
         
         lista.arrayObject![indice] = nuevoItem
         Util.setPedidos(pedidos: lista.arrayObject)
-
+        self.btn_productos.setTitle("Productos ( "+String(lista.count)+" )", for: .normal)
+        self.listaProductos = lista
         tableView.reloadData()
     }
     
@@ -107,7 +120,7 @@ extension PedidosToGoController: UITableViewDataSource, UITableViewDelegate {
         
         cell.lbProducto.text = "\(lista[indexPath.row]["cantidad"].string!) \(lista[indexPath.row]["producto"].string!)"
         cell.lbDescripcion.text = lista[indexPath.row]["descripcion"].string
-        
+        self.btn_productos.setTitle("Productos ( "+String(lista.count)+" )", for: .normal)
         return cell
     }
     
@@ -118,7 +131,8 @@ extension PedidosToGoController: UITableViewDataSource, UITableViewDelegate {
     @objc func eliminarPedido(_ sender: UIButton) {
         lista.arrayObject!.remove(at: sender.tag)
         Util.setPedidos(pedidos: lista.arrayObject)
-        
+         self.btn_productos.setTitle("Productos ( "+String(lista.count)+" )", for: .normal)
+        self.listaProductos = lista
         tableView.reloadData()
     }
 

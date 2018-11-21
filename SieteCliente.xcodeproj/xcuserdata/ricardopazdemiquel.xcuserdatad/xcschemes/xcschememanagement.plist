@@ -7,7 +7,12 @@
 		<key>SieteCliente.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>17</integer>
+			<integer>21</integer>
+		</dict>
+		<key>SieteCliente.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>22</integer>
 		</dict>
 	</dict>
 </dict>

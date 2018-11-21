@@ -1,0 +1,6 @@
+framework module FeelingsView {
+  umbrella header "FeelingsView-umbrella.h"
+
+  export *
+  module * { export * }
+}

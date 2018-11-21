@@ -5,9 +5,22 @@ import SwiftyJSON
 
 class TabBarMainController: UITabBarController {
     
+    @IBOutlet weak var TapBar: UITabBar!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        verificarSiHayCarreraEnCurso()
+        self.tabBarController?.selectedIndex = 2
+        let usuario = Util.getUsuario()
+        if usuario == nil {
+            //SVProgressHUD.dismiss()
+            let inicioVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "IniciarSesionController") as! IniciarSesionController
+            self.present(inicioVC, animated: false, completion: nil)
+           // return
+        }else{
+            verificarSiHayCarreraEnCurso()
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -17,11 +30,13 @@ class TabBarMainController: UITabBarController {
     func verificarSiHayCarreraEnCurso() {
         SVProgressHUD.setDefaultMaskType(.black)
         SVProgressHUD.show(withStatus: "Verificando si hay una carrera en curso...")
-        
+        let usuario = Util.getUsuario()
+    
+        let id = usuario?["id"].stringValue
         let parametros: Parameters = [
             "evento": "get_carrera_cliente",
-            "id_usr": Util.getUsuario()!["id"].int!,
-        ]
+            "id_usr": id ?? "0"
+       ]
         
         Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON { response in
             if response.error == nil {

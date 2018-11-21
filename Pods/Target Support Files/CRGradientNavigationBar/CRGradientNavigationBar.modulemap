@@ -1,0 +1,6 @@
+framework module CRGradientNavigationBar {
+  umbrella header "CRGradientNavigationBar-umbrella.h"
+
+  export *
+  module * { export * }
+}

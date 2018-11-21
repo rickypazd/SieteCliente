@@ -86,7 +86,7 @@ class EsperandoConductorToGoController: UIViewController {
                             break
                         case 10: // cancelada
                             self.hiloCarrera.invalidate()
-                            let alerta = UIAlertController(title: "", message: "El conductor canceló la carrera", preferredStyle: UIAlertControllerStyle.alert)
+                            let alerta = UIAlertController(title: "", message: "El conductor canceló la carrera", preferredStyle: UIAlertController.Style.alert)
                             alerta.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                                 alerta.dismiss(animated: true, completion: nil)
                                 

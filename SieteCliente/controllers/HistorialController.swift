@@ -8,8 +8,11 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
 
     var viajes:[JSON] = []
     @IBOutlet weak var tableViewHistorial: UITableView!
+    var delegate: controlsInput?
+    
     
     var textselecte:UITextField!
+    var objSelect: JSON!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +65,19 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        self.textselecte.text = "asdasda"
+        let viaje = viajes[indexPath.row]
+         self.textselecte.text = viaje["fn_direccion"].string
+        self.objSelect["lat"].double = viaje["fn_lat"].double
+        self.objSelect["lng"].double = viaje["fn_lng"].double
+        delegate?.setJson(obj: self.objSelect)
+//        obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
+//
+////            cell.lbUbicacion?.text = direccion
+////            cell.lbUbicacion?.numberOfLines = 0
+//
+//            //            self.tableViewHistorial.reloadData()
+//        })
+        
          navigationController?.popViewController(animated: true)
         return false
     }
@@ -80,7 +95,9 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
         obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
             cell.lbUbicacion?.text = direccion
             cell.lbUbicacion?.numberOfLines = 0
-
+            self.viajes[indexPath.row]["fn_direccion"].string = direccion
+            self.viajes[indexPath.row]["fn_lat"].double = viaje["latfinal"].double!
+            self.viajes[indexPath.row]["fn_lng"].double = viaje["lngfinal"].double!
 //            self.tableViewHistorial.reloadData()
         })
         

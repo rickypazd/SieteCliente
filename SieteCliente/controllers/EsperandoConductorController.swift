@@ -3,7 +3,7 @@ import GoogleMaps
 import SVProgressHUD
 import SwiftyJSON
 import UIKit
-
+import FittedSheets
 class EsperandoConductorController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
     
     var json:JSON = [] // los datos que recibo desde PidiendoSiete
@@ -34,6 +34,15 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
         locationManager.startUpdatingLocation()
         locationManager.delegate = self
         
+       
+        
+//        let controller = SheetViewController(controller: UIStoryboard(name: "FinalizarViaje", bundle: nil).instantiateViewController(withIdentifier: "sheet2"), sizes: [.halfScreen, .fullScreen, .fixed(250)])
+//
+//        let sheetController = SheetViewController(controller: controller, sizes: [.fixed(100), .fixed(200), .halfScreen, .fullScreen])
+//            sheetController.blurBottomSafeArea = false
+//            sheetController.adjustForBottomSafeArea = true
+//
+//            self.present(controller, animated: false, completion: nil)
         // TODO: ocultar la barra de navegación para impedir que salga de esta pantalla
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
         
@@ -95,11 +104,12 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
                             break
                         case 3: // conductor cerca
                             self.lbEstadoCarrera.text="Tu siete llego."
+                            self.btnCancelarOverPerfil.setTitle("Ver perfil del conductor", for: .normal)
                             // todo notificationReceiver()
                             break
                         case 4: // conductor llego
                             self.lbEstadoCarrera.text="En viaje."
-                            self.btnCancelarOverPerfil.setTitle("Ver perfil del conductor", for: .normal)
+                            
                             // todo cancelar ocultar
                             self.inicioCarrera()
                             break
@@ -115,7 +125,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
                             break
                         case 10: // cancelada
                             self.hiloCarrera.invalidate()
-                            let alerta = UIAlertController(title: "", message: "El conductor canceló la carrera", preferredStyle: UIAlertControllerStyle.alert)
+                            let alerta = UIAlertController(title: "", message: "El conductor canceló la carrera", preferredStyle: UIAlertController.Style.alert)
                             alerta.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                                 alerta.dismiss(animated: true, completion: nil)
                                 
@@ -251,7 +261,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
     }
     
     @IBAction func cancelarCarrera(_ sender: Any) {
-        if json["estado"].int == 4 {
+        if json["estado"].int! >= 3 {
             verPerfilConductor()
         } else {
             cancelarViaje()
@@ -291,7 +301,16 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
     }
     
     func verPerfilConductor() {
-        self.performSegue(withIdentifier: "VerPerfilConductor", sender: self.json["id"].int)
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "PerfilControllerId") as! VerPerfilConductorController
+        vc.idCarrera = self.json["id"].int!
+        let controller = SheetViewController(controller: vc, sizes: [.fullScreen, .fixed(200)])
+        
+        
+        //controller.blurBottomSafeArea = false
+        
+        self.present(controller, animated: false, completion: nil)
+      
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
