@@ -2,7 +2,8 @@ import UIKit
 import GoogleMaps
 import Alamofire
 import SwiftyJSON
-
+import FittedSheets
+import UserNotifications
 protocol controlsInput {
     func setJson(obj: JSON)
 }
@@ -21,7 +22,7 @@ extension UITextField {
 
 
 
-class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UITextFieldDelegate, controlsInput {
+class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate, UITextFieldDelegate, controlsInput, UIGestureRecognizerDelegate, UNUserNotificationCenterDelegate {
    
    
     
@@ -35,6 +36,9 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     var ubic_inicial: JSON = ["direccion": "", "lat": 0, "lng": 0]
     var ubic_final: JSON = ["direccion": "", "lat": 0, "lng": 0]
     var objDetalle: JSON!
+    
+
+    
     @IBOutlet weak var tfInicio: UITextField! {
         didSet {
 //            tfInicio.tintColor = UIColor.lightGray
@@ -59,7 +63,7 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     var marcadorInicio = GMSMarker()
     var marcadorDestino = GMSMarker()
     var polyline = GMSPolyline(path: GMSPath()) // la ruta dibujada en el mapa
-    
+    var controller: SheetViewController!
     
     // lo que recibe de ElegirTipoSiete
     var tipoCarrera: Int = 0
@@ -68,24 +72,59 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         self.tselect = sender
         self.objSelect = self.ubic_inicial
         self.inselect = 0
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "historialid") as! HistorialController
+            vc.textselecte = self.tselect
+            vc.objSelect = self.ubic_inicial
+            vc.delegate = self
+            self.tfInicio.becomeFirstResponder()
+            // self.btn_accion.isHidden = false
+        controller = SheetViewController(controller: vc, sizes: [.fixed(self.contentView.frame.height-150)])
+        //controller.blurBottomSafeArea = false
+        self.view.endEditing(true)
+        self.present(controller, animated: false, completion: nil)
     }
     @IBAction func editingfinal(_ sender: UITextField!) {
         self.tselect = sender
         self.objSelect = self.ubic_final
         self.inselect = 1
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "historialid") as! HistorialController
+        
+        vc.textselecte = self.tselect
+        vc.objSelect = self.ubic_final
+        vc.delegate = self
+        // self.btn_accion.isHidden = false
+        self.tfDestino.becomeFirstResponder()
+        controller = SheetViewController(controller: vc, sizes: [.fixed(self.contentView.frame.height-150)])
+        //controller.blurBottomSafeArea = false
+        self.view.endEditing(true)
+        self.present(controller, animated: false, completion: nil)
+        
     }
+    
+  
+ 
+    
     @IBOutlet weak var tiposCarrerasCollectionView: UICollectionView!
     
     func setJson(obj: JSON) {
-        if self.inselect == 1 {
-            self.ubic_final = obj
-            self.btn_accion.isHidden = true
-            self.confirmar_pedido()
-        }else if self.inselect == 0{
-            self.ubic_inicial = obj
-            self.btn_accion.isHidden = true
-            self.confirmar_pedido()
+        if obj["agg_boton"].int != nil {
+            self.performSegue(withIdentifier: "AgregarFavoritoIden", sender: nil)
+        } else {
+            if self.inselect == 1 {
+                self.ubic_final = obj
+                self.btn_accion.isHidden = true
+                self.confirmar_pedido()
+            }else if self.inselect == 0{
+                self.ubic_inicial = obj
+                self.btn_accion.isHidden = true
+                self.confirmar_pedido()
+            }
+          
         }
+         self.controller.closeSheet()
+       
     }
     let tiposViajes = ["Estándar", "4x4", "Camioneta", "3 filas"]
     
@@ -166,6 +205,10 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
         tap.numberOfTapsRequired=1
         btn_accion.addGestureRecognizer(tap)
         
+//        tfInicio.addTarget(self, action: #selector(myTargetFunction), for: UIControl.Event.touchUpOutside)
+//        tfDestino.addTarget(self, action: #selector(myTargetFunction), for: UIControl.Event.touchUpOutside)
+        
+  
         
         self.tfInicio.delegate = self
         self.tfDestino.delegate = self
@@ -199,6 +242,45 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
              tiposCarrerasCollectionView.isHidden = false
             self.navigationItem.title = "Siete Estándar"
         }
+        
+        self.tselect = self.tfDestino
+        self.objSelect = self.ubic_final
+        self.inselect = 1
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "historialid") as! HistorialController
+        
+        vc.textselecte = self.tselect
+        vc.objSelect = self.ubic_final
+        vc.delegate = self
+        // self.btn_accion.isHidden = false
+        
+        controller = SheetViewController(controller: vc, sizes: [.fixed(self.contentView.frame.height-150)])
+        //controller.blurBottomSafeArea = false
+        
+        self.present(controller, animated: false, completion: nil)
+        
+        self.cargar_historia()
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        tfInicio.resignFirstResponder()
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {    //delegate method
+        print("1")
+    }
+    
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {  //delegate method
+        print("2")
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        self.view.endEditing(true)
+        return false
+    }
+    @objc func handleTap(_ sender: UILongPressGestureRecognizer) {
+        
+      self.view.endEditing(true)
     }
     @objc func back(sender: UIBarButtonItem) {
         self.navigationController?.isNavigationBarHidden = true; self.navigationController?.popViewController(animated: true)
@@ -227,19 +309,25 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
             mapView.delegate = self
             
             contentView.addSubview( mapView )
-            
-            self.ubic_inicial["lat"].double = Double(location.coordinate.latitude )
-            self.ubic_inicial["lng"].double = Double(location.coordinate.longitude )
-            self.ubic_inicial["direccion"].string = "nil"
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+            gestureRecognizer.delegate = self
+            self.mapView.addGestureRecognizer(gestureRecognizer)
+            //self.ubic_inicial["lat"].double = Double(location.coordinate.latitude )
+            //self.ubic_inicial["lng"].double = Double(location.coordinate.longitude )
+            //self.ubic_inicial["direccion"].string = "nil"
             obtenerDireccion(latitud: location.coordinate.latitude, longitud: location.coordinate.longitude, completionHandler: { direccion in
-                self.ubic_inicial["direccion"].string = direccion
-                self.ubic_inicial["lat"].double = location.coordinate.latitude
-                self.ubic_inicial["lng"].double = location.coordinate.longitude
-                self.tfInicio.text = direccion
-                self.tfDestino.becomeFirstResponder()
-                self.tselect = self.tfDestino!
-                self.objSelect = self.ubic_final
-                self.inselect = 1
+                if self.ubic_inicial["lat"].double == 0 && self.ubic_inicial["lng"].double == 0 {
+                    self.ubic_inicial["direccion"].string = direccion
+                    self.ubic_inicial["lat"].double = location.coordinate.latitude
+                    self.ubic_inicial["lng"].double = location.coordinate.longitude
+                    self.tfInicio.text = direccion
+                    self.tfDestino.becomeFirstResponder()
+                    self.view.endEditing(true)
+                    self.tselect = self.tfDestino!
+                    self.objSelect = self.ubic_final
+                    self.inselect = 1
+                }
+             
                 
             })
             
@@ -293,7 +381,7 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
     
     
     func confirmar_pedido(){
-        
+        self.view.endEditing(true)
         let latInicial: Double =   self.ubic_inicial["lat"].double!
         let longInicial: Double = self.ubic_inicial["lng"].double!
         let latFinal: Double =  self.ubic_final["lat"].double!
@@ -387,11 +475,13 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
                 destinoVC.textselecte = self.tfDestino
                 destinoVC.objSelect = self.ubic_final
                 destinoVC.delegate = self
+                destinoVC.viajes = self.viajes
                // self.btn_accion.isHidden = false
             }else if self.inselect == 0{
                 destinoVC.textselecte = self.tfInicio
                 destinoVC.objSelect = self.ubic_inicial
                 destinoVC.delegate = self
+                    destinoVC.viajes = self.viajes
                 //self.btn_accion.isHidden = false
             }
           
@@ -399,7 +489,34 @@ class PrincipalController: UIViewController, CLLocationManagerDelegate, GMSMapVi
 //            destinoVC.json = sender as! JSON
         }
     }
-    
+    var viajes: [JSON]!
+    func cargar_historia(){
+       // SVProgressHUD.setDefaultMaskType(.black)
+        
+        let parametros: Parameters = [
+            "evento": "get_historial_ubic",
+            "id": Util.getUsuario()!["id"].int!
+        ]
+        
+        Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON { response in
+            switch response.result {
+            case .success:
+                let respuesta = JSON(response.data!)
+                // todo:
+                self.viajes = respuesta.array!
+                let ob: JSON = ["arr": self.viajes]
+            
+                Util.setHitorial(historial: ob.dictionaryObject )
+                NotificationCenter.default.post(name: .nuevo_mensaje, object: nil)
+                
+                break
+            case .failure:
+                Util.mostrarAlerta(titulo: "Error", mensaje: "No se pudo conectar con el servidor.")
+                break
+            }
+         //   SVProgressHUD.dismiss()
+        }
+    }
     // esta funcion se encarga de llamar a obtenerDireccion() porque se ejecuta en 2do plano
     func obtenerDireccionDeCoordenadas(latitud: Double, longitud: Double, completionHandler: @escaping (String) -> ()) {
         obtenerDireccion(latitud: latitud, longitud: longitud, completionHandler: completionHandler)
@@ -511,19 +628,6 @@ extension PrincipalController : UICollectionViewDataSource {
         tipoCarrera = sender.tag
     }
  
-    func textFieldDidBeginEditing(textField: UITextField!) {    //delegate method
-       print("1")
-    }
-    
-    func textFieldShouldEndEditing(textField: UITextField!) -> Bool {  //delegate method
-        print("2")
-        return false
-    }
-    
-    func textFieldShouldReturn(textField: UITextField!) -> Bool {   //delegate method
-        textField.resignFirstResponder()
-        print("3")
-        return true
-    }
+
     
 }

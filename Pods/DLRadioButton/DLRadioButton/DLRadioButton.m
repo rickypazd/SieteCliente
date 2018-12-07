@@ -85,7 +85,15 @@ static BOOL _groupModifing = NO;
     CGFloat marginWidth = self.marginWidth;
     BOOL isRightToLeftLayout = NO;
     if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 9.0) {
-        isRightToLeftLayout = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft;
+        if (@available(iOS 9.0, *)) {
+            isRightToLeftLayout = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft;
+        } else {
+            // Fallback on earlier versions
+        }if (@available(iOS 9.0, *)) {
+            isRightToLeftLayout = [UIView userInterfaceLayoutDirectionForSemanticContentAttribute:self.semanticContentAttribute] == UIUserInterfaceLayoutDirectionRightToLeft;
+        } else {
+            // Fallback on earlier versions
+        }
     }
     if (self.isIconOnRight) {
         self.imageEdgeInsets = isRightToLeftLayout ?

@@ -25,34 +25,54 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // todo creo que esto es para solicitar el permiso para usar los mapas
-        locationManager = CLLocationManager()
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.distanceFilter = 50
-        locationManager.startUpdatingLocation()
-        locationManager.delegate = self
-        
-       
-        
-//        let controller = SheetViewController(controller: UIStoryboard(name: "FinalizarViaje", bundle: nil).instantiateViewController(withIdentifier: "sheet2"), sizes: [.halfScreen, .fullScreen, .fixed(250)])
-//
-//        let sheetController = SheetViewController(controller: controller, sizes: [.fixed(100), .fixed(200), .halfScreen, .fullScreen])
-//            sheetController.blurBottomSafeArea = false
-//            sheetController.adjustForBottomSafeArea = true
-//
-//            self.present(controller, animated: false, completion: nil)
-        // TODO: ocultar la barra de navegación para impedir que salga de esta pantalla
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
-        
-        hilo()
+    
+        enableLocationServices()
+      
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
+   
+    func enableLocationServices() {
+        locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .authorizedWhenInUse:
+            // Enable basic location features
+            continuar()
+            break
+            
+        case .authorizedAlways:
+            // Enable any of your app's location features
+            continuar()
+            break
+        }
+    }
+    
+    func continuar(){
+        locationManager = CLLocationManager()
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestAlwaysAuthorization()
+        locationManager.distanceFilter = 50
+        locationManager.startUpdatingLocation()
+        locationManager.delegate = self
+        // TODO: ocultar la barra de navegación para impedir que salga de esta pantalla
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
+        hilo()
+    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let location:CLLocation = locations.last!
         
@@ -69,7 +89,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
     
     func hilo() {
         // todo esto se puede optimizar volviendo a hacer la petición no en un hilo, sino al finalizar la petición
-        hiloCarrera = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: Selector("getPosicionConductor"), userInfo: nil, repeats: true)
+        hiloCarrera = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(EsperandoConductorController.getPosicionConductor), userInfo: nil, repeats: true)
     }
     
     @objc func getPosicionConductor() {
@@ -88,7 +108,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
             if response.error == nil {
                 
                 if let resp = String(data: response.data!, encoding: .utf8) {
-                    if resp == "falso" {
+                    if resp == "" {
                         Util.mostrarAlerta(titulo: "Cerrar esta ventana", mensaje: "No se encontró un conductor disponible, disculpe las molestias.")
                     } else if let datos = resp.data(using: .utf8, allowLossyConversion: false) {
                         let respuesta = try! JSON(data: datos)
@@ -109,16 +129,17 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
                             break
                         case 4: // conductor llego
                             self.lbEstadoCarrera.text="En viaje."
-                            
+                                self.btnCancelarOverPerfil.setTitle("Ver perfil del conductor", for: .normal)
                             // todo cancelar ocultar
                             self.inicioCarrera()
                             break
                         case 5: // inicio carrera
-                     
+                         self.btnCancelarOverPerfil.setTitle("Ver perfil del conductor", for: .normal)
                             self.finalizoCarrera(json: respuesta)
                             break
                         case 6: // en cobro
                             self.lbEstadoCarrera.text="Viaje finalizado"
+                                self.btnCancelarOverPerfil.setTitle("Ver perfil del conductor", for: .normal)
                             break
                         case 7: //finalizada`
                             self.performSegue(withIdentifier: "FinalizarViaje", sender: self.json)
@@ -141,7 +162,13 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
                             break
                         }
                         
-                        
+                        if self.conductor == nil {
+                            if self.onCur == false{
+                                self.onCur = true
+                                self.obtenerPerfilConductor()
+                            }
+                            
+                        }
                         let lat = respuesta["lat"].double!
                         let lng = respuesta["lng"].double!
                         
@@ -193,6 +220,8 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
                         //                    marauto.setPosition(ll1);
                         //                    marauto.setRotation(degre);
                         //                    }
+                    
+                    
                     }
                 }
             } else {
@@ -261,11 +290,20 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
     }
     
     @IBAction func cancelarCarrera(_ sender: Any) {
-        if json["estado"].int! >= 3 {
-            verPerfilConductor()
-        } else {
-            cancelarViaje()
+        if let estado = objCarreraJson["estado"].int{
+            if estado >= 3 {
+                if self.conductor != nil{
+                    if self.conductor["id"].string != nil {
+                        self.verPerfilConductor()
+                    }
+                }
+                
+                
+            } else {
+                cancelarViaje()
+            }
         }
+        
         
     }
     
@@ -304,6 +342,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
         let story = UIStoryboard(name: "Main", bundle: nil)
         let vc = story.instantiateViewController(withIdentifier: "PerfilControllerId") as! VerPerfilConductorController
         vc.idCarrera = self.json["id"].int!
+        vc.conductor = self.conductor
         let controller = SheetViewController(controller: vc, sizes: [.fullScreen, .fixed(200)])
         
         
@@ -311,6 +350,47 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
         
         self.present(controller, animated: false, completion: nil)
       
+    }
+    var conductor: JSON!
+    var onCur: Bool = false
+    func obtenerPerfilConductor() -> Void {
+      
+        if json["id"].int == nil{
+            return
+        }
+        SVProgressHUD.setDefaultMaskType(.black)
+        
+        let parametros: Parameters = [
+            "evento": "get_info_con_carrera",
+            "id_carrera": json["id"].int!
+        ]
+        
+        Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON {
+            response in
+            
+            switch response.result {
+            case .success:
+                let respuesta = JSON(response.data!) // todo creo que esto acá no va
+                
+                if respuesta.isEmpty {
+                    Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "No se pudo cargar la información del conductor.")
+                    self.onCur = false
+                    return
+                }
+                
+                self.conductor = respuesta
+                
+                
+                break
+                
+            case .failure:
+                Util.mostrarAlerta(titulo: "Error", mensaje: "No se pudo conectar con el servidor.")
+                self.onCur = true
+                break
+            }
+            
+            SVProgressHUD.dismiss()
+        }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -325,6 +405,7 @@ class EsperandoConductorController: UIViewController, CLLocationManagerDelegate,
         } else if segue.identifier == "VerPerfilConductor" {
             let destinoVC = segue.destination as! VerPerfilConductorController
             destinoVC.idCarrera = sender as! Int
+            destinoVC.conductor = conductor
         }
     }
     

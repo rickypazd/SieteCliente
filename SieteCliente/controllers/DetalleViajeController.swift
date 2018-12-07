@@ -320,6 +320,8 @@ class DetalleViajeController: UIViewController {
     
     func obtenerViaje() {
         SVProgressHUD.setDefaultMaskType(.black)
+        SVProgressHUD.show(withStatus: "Cargando el viaje...")
+        
         
         let parametros: Parameters = [
             "evento": "get_viaje_detalle",

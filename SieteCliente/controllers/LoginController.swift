@@ -42,7 +42,7 @@ class LoginController: UIViewController {
             "evento": "login_cliente",
             "pass": MD5(clave).lowercased(),
             "usuario": usuario,
-            "token": ""
+            "token": Util.getToken() ?? " "
         ]
         
         Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON {

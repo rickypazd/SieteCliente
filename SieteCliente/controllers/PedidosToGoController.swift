@@ -36,10 +36,15 @@ class PedidosToGoController: UIViewController {
     }
     func mostrarAlerta(nuevoPedido:Bool, indice:Int?) {
         let alerta = UIAlertController(title: nuevoPedido ? "Agregar pedido" : "Editar pedido", message: "", preferredStyle: .alert)
+        alerta.view.backgroundColor = UIColor.init(red: 93, green: 56, blue: 148)
+        alerta.view.layer.opacity = 1
+        alerta.view.isOpaque = true
+        alerta.view.layer.cornerRadius =  15
         
         alerta.addTextField { (textField) in
             textField.placeholder = "Producto"
             textField.text = nuevoPedido ? "" : self.lista[indice!]["producto"].string
+            
         }
         
         alerta.addTextField { (textField) in
@@ -50,6 +55,7 @@ class PedidosToGoController: UIViewController {
         alerta.addTextField { (textField) in
             textField.placeholder = "Cantidad"
             textField.text = nuevoPedido ? "" : self.lista[indice!]["cantidad"].string
+            textField.keyboardType = UIKeyboardType.numberPad
         }
         
         let accionOk = UIAlertAction(title: "Ok", style: .default, handler: { (action) in

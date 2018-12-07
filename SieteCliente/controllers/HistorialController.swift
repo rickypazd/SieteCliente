@@ -7,7 +7,9 @@ import SwiftyJSON
 class HistorialController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     var viajes:[JSON] = []
+    var favoritos:[JSON] = []
     @IBOutlet weak var tableViewHistorial: UITableView!
+    @IBOutlet weak var tableviewFavorito: UITableView!
     var delegate: controlsInput?
     
     
@@ -18,9 +20,15 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
         super.viewDidLoad()
 
         self.tableViewHistorial.isHidden = true
+        obtenerFavoritos()
+        NotificationCenter.default.addObserver(self, selector: #selector(notifiMensaje(notification:)), name: .nuevo_mensaje , object: nil)
+        
+   
         obtenerHistorialDeViajes()
     }
-
+    @objc func notifiMensaje(notification: Notification){
+        obtenerHistorialDeViajes()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -29,10 +37,12 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
         switch sender.selectedSegmentIndex {
         case 0: /* Favoritos */
             tableViewHistorial.isHidden = true
+            tableviewFavorito.isHidden = false
             break
             
         case 1: /* Historial */
             tableViewHistorial.isHidden = false
+            tableviewFavorito.isHidden = true
             break
             
         default:
@@ -40,68 +50,109 @@ class HistorialController: UIViewController, UITableViewDelegate, UITableViewDat
         }
     }
     
+
     func obtenerHistorialDeViajes() {
-        SVProgressHUD.setDefaultMaskType(.black)
-        
-        let parametros: Parameters = [
-            "evento": "get_historial_ubic",
-            "id": Util.getUsuario()!["id"].int!
-        ]
-        
-        Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON { response in
-            switch response.result {
-            case .success:
-                let respuesta = JSON(response.data!)
-                // todo:
-                self.viajes = respuesta.array!
-                self.tableViewHistorial.reloadData()
-                break
-            case .failure:
-                Util.mostrarAlerta(titulo: "Error", mensaje: "No se pudo conectar con el servidor.")
-                break
-            }
-            SVProgressHUD.dismiss()
+        var obj: JSON! = Util.getHistorial()
+        if obj != nil {
+            self.viajes = obj["arr"].arrayValue
+            self.tableViewHistorial.reloadData()
         }
+        
+    }
+    
+    func obtenerFavoritos() {
+        var obj: JSON! = Util.getFavoritos()
+        if obj != nil {
+                   self.favoritos = obj["arr"].arrayValue
+                self.tableviewFavorito.reloadData()
+        }
+ 
     }
     
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
-        let viaje = viajes[indexPath.row]
-         self.textselecte.text = viaje["fn_direccion"].string
-        self.objSelect["lat"].double = viaje["fn_lat"].double
-        self.objSelect["lng"].double = viaje["fn_lng"].double
-        delegate?.setJson(obj: self.objSelect)
-//        obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
-//
-////            cell.lbUbicacion?.text = direccion
-////            cell.lbUbicacion?.numberOfLines = 0
-//
-//            //            self.tableViewHistorial.reloadData()
-//        })
-        
-         navigationController?.popViewController(animated: true)
-        return false
+        if tableView ==  self.tableViewHistorial{
+            let viaje = viajes[indexPath.row]
+            self.textselecte.text = viaje["fn_direccion"].string
+            self.objSelect["lat"].double = viaje["fn_lat"].double
+            self.objSelect["lng"].double = viaje["fn_lng"].double
+            delegate?.setJson(obj: self.objSelect)
+            //        obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
+            //
+            ////            cell.lbUbicacion?.text = direccion
+            ////            cell.lbUbicacion?.numberOfLines = 0
+            //
+            //            //            self.tableViewHistorial.reloadData()
+            //        })
+            
+            navigationController?.popViewController(animated: true)
+           
+        }else if tableView == self.tableviewFavorito{
+            if indexPath.row-1 < 0 {
+                //agregarFavoritos
+                let json = JSON(["agg_boton":1])
+                delegate?.setJson(obj: json)
+                
+            }else{
+                let viaje = favoritos[indexPath.row-1]
+                self.textselecte.text = viaje["nombre"].string
+                self.objSelect["lat"].double = viaje["lat"].double
+                self.objSelect["lng"].double = viaje["lng"].double
+                delegate?.setJson(obj: self.objSelect)
+                //        obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
+                //
+                ////            cell.lbUbicacion?.text = direccion
+                ////            cell.lbUbicacion?.numberOfLines = 0
+                //
+                navigationController?.popViewController(animated: true)
+            }
+           
+        }
+     return false
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viajes.count
+        if tableView ==  self.tableViewHistorial{
+          return viajes.count
+        }else if tableView == self.tableviewFavorito{
+            return favoritos.count+1
+        }
+        return 0
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "historialCell", for: indexPath) as! HistorialTableViewCell
         
-        let viaje = viajes[indexPath.row]
-        
-        obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
-            cell.lbUbicacion?.text = direccion
-            cell.lbUbicacion?.numberOfLines = 0
-            self.viajes[indexPath.row]["fn_direccion"].string = direccion
-            self.viajes[indexPath.row]["fn_lat"].double = viaje["latfinal"].double!
-            self.viajes[indexPath.row]["fn_lng"].double = viaje["lngfinal"].double!
-//            self.tableViewHistorial.reloadData()
-        })
-        
-        return cell
+        if tableView ==  self.tableViewHistorial{
+            let cell = tableView.dequeueReusableCell(withIdentifier: "historialCell", for: indexPath) as! HistorialTableViewCell
+            
+            let viaje = viajes[indexPath.row]
+            
+            obtenerDireccion(latitud: viaje["latfinal"].double!, longitud: viaje["lngfinal"].double!, completionHandler: { direccion in
+                cell.lbUbicacion?.text = direccion
+                cell.lbUbicacion?.numberOfLines = 0
+                self.viajes[indexPath.row]["fn_direccion"].string = direccion
+                self.viajes[indexPath.row]["fn_lat"].double = viaje["latfinal"].double!
+                self.viajes[indexPath.row]["fn_lng"].double = viaje["lngfinal"].double!
+                //            self.tableViewHistorial.reloadData()
+            })
+            
+            return cell
+        }else if tableView == self.tableviewFavorito{
+            
+            if (indexPath.row-1) < 0{
+               let cell = tableView.dequeueReusableCell(withIdentifier: "aggfavoritoCell", for: indexPath) as! HistorialTableViewCell
+                
+                return cell
+            }else{
+                let cell = tableView.dequeueReusableCell(withIdentifier: "favoritoCell", for: indexPath) as! HistorialTableViewCell
+                let viaje = favoritos[indexPath.row-1]
+                cell.lbUbicacion?.text = viaje["nombre"].string
+                cell.lbUbicacion?.numberOfLines = 0
+                
+                return cell
+            }
+        }
+        return nil!
     }
 
     // esta funcion se encarga de llamar a obtenerDireccion() porque se ejecuta en 2do plano

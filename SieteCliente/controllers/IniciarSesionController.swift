@@ -9,7 +9,7 @@ class IniciarSesionController: UIViewController {
     
     @IBOutlet weak var btnLoginFacebook: RoundButton!
     var estaIngresandoConFb:Bool = false
-    
+  
     override func viewDidLoad() {
         super.viewDidLoad()
         var colors = [UIColor]()
@@ -19,7 +19,7 @@ class IniciarSesionController: UIViewController {
         navigationItem.title = "Iniciar sesión"
         if Util.getUsuario() != nil {
             let viewController = storyboard?.instantiateViewController(withIdentifier: "TabBarMainController") as! TabBarMainController
-            viewController.selectedViewController = viewController.viewControllers?[1]
+            viewController.selectedViewController = viewController.viewControllers?[2]
             present(viewController, animated: false, completion: nil)
             return
         }
@@ -64,7 +64,9 @@ class IniciarSesionController: UIViewController {
         
         let parametros: Parameters = [
             "evento": "get_usuario_face",
-            "id_usr": id
+            "id_usr": id,
+            "token": Util.getToken() ?? " "
+        
         ]
         
         Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON { response in

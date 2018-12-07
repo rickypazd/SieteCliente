@@ -38,7 +38,7 @@ class RegistrarController: UIViewController {
         let apellidoPaterno = tfApellidoPaterno.text
         let apellidoMaterno = tfApellidoMaterno.text
         let telefono = tfTelefono.text
-        let sexo = radioHombre.isSelected ? "Hombre" : (radioMujer.isSelected ? "Mujer" : "")
+        var sexo = radioHombre.isSelected ? "Hombre" : (radioMujer.isSelected ? "Mujer" : "")
         
         if (nombre?.isEmpty)! {
             Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "Debe ingresar su nombre.")
@@ -56,8 +56,9 @@ class RegistrarController: UIViewController {
         }
         
         if sexo.isEmpty {
-            Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "Debe seleccionar un género.")
-            return
+            //Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "Debe seleccionar un género.")
+            sexo = "null"
+            //return
         }
         
         crearCuenta(nombre: nombre!, apellidoPaterno: apellidoPaterno!, apellidoMaterno: apellidoMaterno!, telefono: telefono!, genero: sexo)

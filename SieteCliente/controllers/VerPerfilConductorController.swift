@@ -50,69 +50,39 @@ class VerPerfilConductorController: UIViewController {
     var conductor:JSON = []
     var idCarrera:Int = 0
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.setNavigationBar()
         // todo creo que seria mejor que esto vaya en esperando conductor
-       obtenerPerfilConductor()
+        if conductor["id"].string != nil {
+            cargar_perfil()
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func obtenerPerfilConductor() -> Void {
-        if idCarrera == 0 {
-            return
+    func cargar_perfil(){
+        
+        let nombreConductor = conductor["nombre"].string!
+        let apellidoPa = conductor["apellido_pa"].string!
+        let apellidoMa = conductor["apellido_ma"].string!
+        let modelo = conductor["modelo"].string!
+        let marca = conductor["marca"].string!
+        let viajes = conductor["cant_car"].int!
+        let placa = conductor["placa"].string!
+        
+        if !conductor["foto_perfil"].string!.isEmpty {
+            self.obtenerFotoDePerfil(url: conductor["foto_perfil"].string!)
         }
-        
-        SVProgressHUD.setDefaultMaskType(.black)
-        
-        let parametros: Parameters = [
-            "evento": "get_info_con_carrera",
-            "id_carrera": idCarrera
-        ]
-        
-        Alamofire.request(Util.urlIndexCtrl, parameters: parametros).responseJSON {
-            response in
-            
-            switch response.result {
-            case .success:
-                let respuesta = JSON(response.data!) // todo creo que esto acá no va
-                
-                if respuesta.isEmpty {
-                    Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "No se pudo cargar la información del conductor.")
-                    return
-                }
-                
-                self.conductor = respuesta
-                
-                let nombreConductor = respuesta["nombre"].string!
-                let apellidoPa = respuesta["apellido_pa"].string!
-                let apellidoMa = respuesta["apellido_ma"].string!
-                let modelo = respuesta["modelo"].string!
-                let marca = respuesta["marca"].string!
-                let viajes = respuesta["cant_car"].int!
-                let placa = respuesta["placa"].string!
-                
-                if !respuesta["foto_perfil"].string!.isEmpty {
-                    self.obtenerFotoDePerfil(url: respuesta["foto_perfil"].string!)
-                }
-                self.comentario.text = respuesta["comentario"].string
-                self.lbNombre.text = "\(nombreConductor) \(apellidoPa) \(apellidoMa)"
-                self.lbVehiculo.text = "\(marca)-\(modelo)"
-                self.lbPlaca.text = placa
-                self.lbViajesCompletados.text = "Ha completado \(viajes) viajes."
-                
-                break
-                
-            case .failure:
-                Util.mostrarAlerta(titulo: "Error", mensaje: "No se pudo conectar con el servidor.")
-                break
-            }
-            
-            SVProgressHUD.dismiss()
-        }
+        self.comentario.text = conductor["comentario"].string
+        self.lbNombre.text = "\(nombreConductor) \(apellidoPa) \(apellidoMa)"
+        self.lbVehiculo.text = "\(marca)-\(modelo)"
+        self.lbPlaca.text = placa
+        self.lbViajesCompletados.text = "Ha completado \(viajes) viajes."
     }
     
     func obtenerFotoDePerfil(url:String) {

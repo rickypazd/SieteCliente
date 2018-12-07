@@ -17,7 +17,7 @@ class ElegirTipoSieteController: UIViewController {
         navigationController?.navigationBar.setGradientBackground(colors: colors)
         navigationItem.title = "Tipos de siete"
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Atrás", style: .plain, target: nil, action: nil)
-         
+          self.navigationController?.isNavigationBarHidden = true
         let ancho = contentView.bounds.size.width / 2
       
         var alto = contentView.bounds.size.height / 2

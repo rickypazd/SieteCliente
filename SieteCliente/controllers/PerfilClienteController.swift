@@ -63,10 +63,14 @@ class PerfilClienteController: UIViewController {
                     self.lbCreditos.text = "\(creditos)"
                 }
                 
-                if let fotoPerfil = respuesta["foto_perfil"].string {
-                    self.obtenerFotoDePerfil(url: fotoPerfil)
+                if let fotoPerfil = respuesta["id_face"].string {
+                  
+                    
+                    //let facebookProfileUrl = "http://graph.facebook.com/\(fotoPerfil)/picture?type=large"
+                    let url = NSURL(string: "https://graph.facebook.com/\(fotoPerfil)/picture?type=large&return_ssl_resources=1")
+                    self.imgPerfil.image = UIImage(data: NSData(contentsOf: url! as URL)! as Data)
                 }
-                
+             
                 break
                 
             case .failure:
@@ -79,7 +83,7 @@ class PerfilClienteController: UIViewController {
     }
     
     func obtenerFotoDePerfil(url:String) {
-        Alamofire.request(Util.urlFoto + url).responseData { response in
+        Alamofire.request(url).responseData { response in
             if let datos = response.result.value {
                 let imagen = UIImage(data: datos)
                 

@@ -32,14 +32,15 @@ class FinalizarRegistroController: UIViewController {
     }
     
     @IBAction func validarCampos(_ sender: Any) {
-        let fechaNacimiento = tfFechaNacimiento.text!
+        var fechaNacimiento = tfFechaNacimiento.text!
         let usuario = tfUsuario.text!
         let clave = tfClave.text!
         let correo = tfCorreo.text!
         
         if !estaIngresandoConFb && fechaNacimiento.isEmpty {
-            Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "La fecha de nacimiento no puede estar vacía.")
-            return
+            //Util.mostrarAlerta(titulo: "Hubo un error!", mensaje: "La fecha de nacimiento no puede estar vacía.")
+            fechaNacimiento = "1900-01-01"
+            //return
         }
         
         if !estaIngresandoConFb && usuario.isEmpty {

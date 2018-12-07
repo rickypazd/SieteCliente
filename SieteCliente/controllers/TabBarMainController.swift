@@ -10,7 +10,8 @@ class TabBarMainController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBarController?.selectedIndex = 2
+        //self.selectedIndex = 2
+        
         let usuario = Util.getUsuario()
         if usuario == nil {
             //SVProgressHUD.dismiss()
@@ -22,7 +23,7 @@ class TabBarMainController: UITabBarController {
         }
         
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

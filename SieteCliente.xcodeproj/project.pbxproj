@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		834E426AE67C5BDB5866B9C2 /* Pods_SieteCliente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4594B68A18F9590B0C8520B /* Pods_SieteCliente.framework */; };
+		834E426AE67C5BDB5866B9C2 /* Pods_SieteCliente.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F4594B68A18F9590B0C8520B /* Pods_SieteCliente.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		C805BC7A2179FF0800CFCCE3 /* HistorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC792179FF0800CFCCE3 /* HistorialController.swift */; };
 		C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7B217A01D200CFCCE3 /* HistorialTableViewCell.swift */; };
 		C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C805BC7D217A039900CFCCE3 /* TabBarViajesController.swift */; };
@@ -20,6 +20,7 @@
 		C8275790213ECB86002968AF /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C827578F213ECB86002968AF /* RoundButton.swift */; };
 		C8275792213ECEFE002968AF /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8275791213ECEFE002968AF /* UIColor.swift */; };
 		C8275794213ED06E002968AF /* UICustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8275793213ED06E002968AF /* UICustomView.swift */; };
+		C828478521A92E1300924B55 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C828478421A92E1200924B55 /* GoogleService-Info.plist */; };
 		C8354D9D211B409B001D9007 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8354D9C211B409B001D9007 /* AppDelegate.swift */; };
 		C8354DA2211B409B001D9007 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA0211B409B001D9007 /* Main.storyboard */; };
 		C8354DA4211B409C001D9007 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8354DA3211B409C001D9007 /* Assets.xcassets */; };
@@ -37,7 +38,6 @@
 		C84FCCB3218A2606004A41DB /* ChatEmisorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */; };
 		C858868D21271CDA0045100F /* MisViajesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C858868C21271CDA0045100F /* MisViajesTableViewCell.swift */; };
 		C86BD926216B9D1F0094584C /* CalificarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C86BD925216B9D1F0094584C /* CalificarViajeController.swift */; };
-		C89040772153E69300D70BC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C89040762153E69300D70BC3 /* GoogleService-Info.plist */; };
 		C8A3ABB721231307001F1214 /* FinalizarRegistroController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A3ABB621231307001F1214 /* FinalizarRegistroController.swift */; };
 		C8A5971021481360002155E5 /* TransaccionesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A5970F21481360002155E5 /* TransaccionesTableViewCell.swift */; };
 		C8A5B9AE21402E0700AC8628 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */; };
@@ -56,6 +56,8 @@
 		C8F2F7F1214E996100383C2E /* EsperandoConductorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F0214E996100383C2E /* EsperandoConductorController.swift */; };
 		C8F2F7F3214E9AC000383C2E /* FinalizarViajeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F2214E9AC000383C2E /* FinalizarViajeController.swift */; };
 		C8F2F7F5214E9B5C00383C2E /* VerPerfilConductorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F2F7F4214E9B5C00383C2E /* VerPerfilConductorController.swift */; };
+		C8F87F6B21A810A100BA5786 /* AgregarFavoritoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F87F6A21A810A100BA5786 /* AgregarFavoritoController.swift */; };
+		C8F87F6D21A8162100BA5786 /* AgregarFavoritoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8F87F6C21A8162100BA5786 /* AgregarFavoritoCell.swift */; };
 		C8FE33A321247B8500DCA4E6 /* PrincipalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A221247B8500DCA4E6 /* PrincipalController.swift */; };
 		C8FE33A521247B9200DCA4E6 /* TabMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A421247B9200DCA4E6 /* TabMenuController.swift */; };
 		C8FE33A721247C2200DCA4E6 /* TabBarMainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8FE33A621247C2200DCA4E6 /* TabBarMainController.swift */; };
@@ -76,6 +78,7 @@
 		C827578F213ECB86002968AF /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		C8275791213ECEFE002968AF /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		C8275793213ED06E002968AF /* UICustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICustomView.swift; sourceTree = "<group>"; };
+		C828478421A92E1200924B55 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8354D99211B409B001D9007 /* SieteCliente.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SieteCliente.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8354D9C211B409B001D9007 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C8354DA1211B409B001D9007 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -95,7 +98,6 @@
 		C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatEmisorCell.swift; sourceTree = "<group>"; };
 		C858868C21271CDA0045100F /* MisViajesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MisViajesTableViewCell.swift; sourceTree = "<group>"; };
 		C86BD925216B9D1F0094584C /* CalificarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalificarViajeController.swift; sourceTree = "<group>"; };
-		C89040762153E69300D70BC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C8A3ABB621231307001F1214 /* FinalizarRegistroController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizarRegistroController.swift; sourceTree = "<group>"; };
 		C8A5970F21481360002155E5 /* TransaccionesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransaccionesTableViewCell.swift; sourceTree = "<group>"; };
 		C8A5B9AD21402E0700AC8628 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 		C8F2F7F0214E996100383C2E /* EsperandoConductorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EsperandoConductorController.swift; sourceTree = "<group>"; };
 		C8F2F7F2214E9AC000383C2E /* FinalizarViajeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinalizarViajeController.swift; sourceTree = "<group>"; };
 		C8F2F7F4214E9B5C00383C2E /* VerPerfilConductorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerPerfilConductorController.swift; sourceTree = "<group>"; };
+		C8F87F6A21A810A100BA5786 /* AgregarFavoritoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarFavoritoController.swift; sourceTree = "<group>"; };
+		C8F87F6C21A8162100BA5786 /* AgregarFavoritoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgregarFavoritoCell.swift; sourceTree = "<group>"; };
 		C8FE33A221247B8500DCA4E6 /* PrincipalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrincipalController.swift; sourceTree = "<group>"; };
 		C8FE33A421247B9200DCA4E6 /* TabMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabMenuController.swift; sourceTree = "<group>"; };
 		C8FE33A621247C2200DCA4E6 /* TabBarMainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarMainController.swift; sourceTree = "<group>"; };
@@ -188,7 +192,7 @@
 				C8354DA0211B409B001D9007 /* Main.storyboard */,
 				C8354DA3211B409C001D9007 /* Assets.xcassets */,
 				C8354DA5211B409C001D9007 /* LaunchScreen.storyboard */,
-				C89040762153E69300D70BC3 /* GoogleService-Info.plist */,
+				C828478421A92E1200924B55 /* GoogleService-Info.plist */,
 				C8354DA8211B409C001D9007 /* Info.plist */,
 			);
 			path = SieteCliente;
@@ -224,6 +228,7 @@
 				C8CF4463218B8720007BC3FF /* PedidosToGoController.swift */,
 				C8CF4467218C4005007BC3FF /* EsperandoConductorToGoController.swift */,
 				C80B6290219FAE0E000A7B75 /* DetalleViajeController.swift */,
+				C8F87F6A21A810A100BA5786 /* AgregarFavoritoController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 				C84FCCB0218A06E5004A41DB /* ChatCell.swift */,
 				C84FCCB2218A2606004A41DB /* ChatEmisorCell.swift */,
 				C8CF4465218B8804007BC3FF /* PedidoTableViewCell.swift */,
+				C8F87F6C21A8162100BA5786 /* AgregarFavoritoCell.swift */,
 			);
 			path = "table controllers";
 			sourceTree = "<group>";
@@ -299,6 +305,12 @@
 							com.apple.Keychain = {
 								enabled = 0;
 							};
+							com.apple.NetworkExtensions.iOS = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 				};
@@ -326,8 +338,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C828478521A92E1300924B55 /* GoogleService-Info.plist in Resources */,
 				C8354DA7211B409C001D9007 /* LaunchScreen.storyboard in Resources */,
-				C89040772153E69300D70BC3 /* GoogleService-Info.plist in Resources */,
 				C8354DA4211B409C001D9007 /* Assets.xcassets in Resources */,
 				C8354DA2211B409B001D9007 /* Main.storyboard in Resources */,
 			);
@@ -390,12 +402,10 @@
 				"${BUILT_PRODUCTS_DIR}/DatePickerDialog/DatePickerDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
-				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/FeelingsView/FeelingsView.framework",
 				"${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework",
 				"${BUILT_PRODUCTS_DIR}/GooglePlacesSearchController/GooglePlacesSearchController.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
-				"${BUILT_PRODUCTS_DIR}/MaterialComponents/MaterialComponents.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftHash/SwiftHash.framework",
@@ -412,12 +422,10 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DatePickerDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FeelingsView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FittedSheets.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GooglePlacesSearchController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MaterialComponents.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftHash.framework",
@@ -448,8 +456,10 @@
 				C8CF4468218C4005007BC3FF /* EsperandoConductorToGoController.swift in Sources */,
 				C83898C921A2D5B500D121C5 /* FeelingsView.swift in Sources */,
 				C805BC7C217A01D200CFCCE3 /* HistorialTableViewCell.swift in Sources */,
+				C8F87F6B21A810A100BA5786 /* AgregarFavoritoController.swift in Sources */,
 				C805BC7E217A039900CFCCE3 /* TabBarViajesController.swift in Sources */,
 				C8354D9D211B409B001D9007 /* AppDelegate.swift in Sources */,
+				C8F87F6D21A8162100BA5786 /* AgregarFavoritoCell.swift in Sources */,
 				C80B629321A0222A000A7B75 /* ImageAttachment.swift in Sources */,
 				C840E05A215D10D8001FB80A /* CancelarViajeController.swift in Sources */,
 				C8E8F43A21A556500066869B /* UICustonStack.swift in Sources */,
@@ -628,17 +638,20 @@
 			baseConfigurationReference = BE564FD1790B1DF8B22EB649 /* Pods-SieteCliente.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLM2M5749F;
+				CODE_SIGN_ENTITLEMENTS = SieteCliente/SieteCliente.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = MCVXBZ6TKW;
 				INFOPLIST_FILE = SieteCliente/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteappCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Siete Cliente";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -649,17 +662,20 @@
 			baseConfigurationReference = 2064EA8CAF76F3A157704BCE /* Pods-SieteCliente.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = NLM2M5749F;
+				CODE_SIGN_ENTITLEMENTS = SieteCliente/SieteCliente.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = MCVXBZ6TKW;
 				INFOPLIST_FILE = SieteCliente/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteCliente;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.servisis.SieteappCliente;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "Siete Cliente";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -5,12 +5,12 @@ import SwiftyJSON
 /* acá se tienen métodos para usarlos en toda la app, el equivalente a SharedPreferences en android es UserDefaults */
 class Util {
     
-//    static let urlIndexCtrl:String = "http://192.168.0.11:8080/siete/indexController"
-//    static let urlAdminCtrl:String = "http://192.168.0.11:8080/siete/admin/adminController"
-    static let urlIndexCtrl:String = "http://204.93.196.61:8080/sietePrueva/indexController"
-    static let urlAdminCtrl:String = "http://204.93.196.61:8080/sietePrueva/admin/adminController"
-    static let urlFoto:String = "http://204.93.196.61:8080/sietePrueva/"
-    
+//   static let urlIndexCtrl:String = "http://192.168.1.104:8080/siete/indexController"
+//    static let urlAdminCtrl:String = "http://192.168.1.104:8080/siete/admin/adminController"
+    static let urlIndexCtrl:String = "http://204.93.196.61:8080/siete/indexController"
+    static let urlAdminCtrl:String = "http://204.93.196.61:8080/siete/admin/adminController"
+    static let urlFoto:String = "http://204.93.196.61:8080/siete/"
+
     /* TIPOS DE CARRERA */
     static let ESTANDAR = 1
     static let TO_GO = 2
@@ -23,7 +23,9 @@ class Util {
     private static let KEY_USUARIO = "usuario"
     private static let KEY_CHAT = "chat"
     private static let KEY_PEDIDOS = "pedidos"
-    
+    private static let KEY_FAVORITOS = "favoritos"
+    private static let KEY_HISTORIAL = "historial"
+    private static let KEY_TOKEN = "tokenfbcm"
     class func getUsuario() -> JSON? {
         let usuario = UserDefaults.standard.dictionary(forKey: KEY_USUARIO)
         
@@ -41,6 +43,63 @@ class Util {
         }
         
         UserDefaults.standard.setValue(usuario, forKey: KEY_USUARIO)
+    }
+    
+    class func getFavoritos() -> JSON? {
+        let usuario = UserDefaults.standard.dictionary(forKey: KEY_FAVORITOS)
+        
+        if usuario == nil {
+            return nil
+        }
+        
+        return JSON(usuario!)
+    }
+    
+    class func setFavoritos(favoritos: Any?) {
+        if favoritos == nil {
+            UserDefaults.standard.removeObject(forKey: KEY_FAVORITOS)
+            return
+        }
+        
+        UserDefaults.standard.setValue(favoritos, forKey: KEY_FAVORITOS)
+    }
+    
+    class func getHistorial() -> JSON? {
+        let historial = UserDefaults.standard.dictionary(forKey: KEY_HISTORIAL)
+        
+        if historial == nil {
+            return nil
+        }
+        
+        return JSON(historial!)
+    }
+    
+    class func setHitorial(historial: Any?) {
+        if historial == nil {
+            UserDefaults.standard.removeObject(forKey: KEY_HISTORIAL)
+            return
+        }
+        
+        UserDefaults.standard.setValue(historial, forKey: KEY_HISTORIAL)
+    }
+   
+    class func getToken() -> String? {
+        let usuario = UserDefaults.standard.string(forKey: KEY_TOKEN)
+        
+        if usuario == nil {
+            return ""
+        }
+        
+        return usuario
+    }
+    
+    class func setToken(token: Any?) {
+        if token == nil {
+            UserDefaults.standard.removeObject(forKey: KEY_TOKEN)
+            return
+        }
+        
+        UserDefaults.standard.setValue(token, forKey: KEY_TOKEN)
     }
     
     class func getChat() -> JSON? {

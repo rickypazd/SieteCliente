@@ -41,7 +41,7 @@ class EsperandoConductorToGoController: UIViewController {
     
     func hilo() {
         // TODO: esto se puede optimizar volviendo a hacer la petición no en un hilo, sino al finalizar la petición
-        hiloCarrera = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: Selector("getPosicionConductor"), userInfo: nil, repeats: true)
+        hiloCarrera = Timer.scheduledTimer(timeInterval: 1.5, target: self, selector: #selector(EsperandoConductorToGoController.getPosicionConductor), userInfo: nil, repeats: true)
     }
     
     @objc func getPosicionConductor() {

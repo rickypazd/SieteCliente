@@ -39,7 +39,7 @@ self.navigationController?.isNavigationBarHidden = true
         let parametros: Parameters = [
             "evento": "actualizar_token",
             "id_usr": Util.getUsuario()!["id"].int!,
-            "token": Util.getUsuario()!["token"].string ?? self.json["token"].string! // todo en qué momento obtengo el token de firebase?
+            "token": Util.getToken()! 
         ]
 
         Alamofire.request(Util.urlAdminCtrl, parameters: parametros).response { response in
@@ -74,7 +74,7 @@ self.navigationController?.isNavigationBarHidden = true
             "lngInicio": json["lnginicio"].double!,
             "latFin": json["latfinal"].double!,
             "lngFin": json["lngfinal"].double!,
-            "token": Util.getUsuario()!["token"].string ?? self.json["token"].string!, // todo en qué momento obtengo el token de firebase?
+            "token": Util.getToken()!,// todo en qué momento obtengo el token de firebase?
             "id": Util.getUsuario()!["id"].int!,
             "tipo": json["tipo"].int!,
             "tipo_pago": json["tipo_pago"].int!
@@ -122,7 +122,7 @@ self.navigationController?.isNavigationBarHidden = true
             "evento": "buscar_carrera_togo",
             "latFin": json["latFin"].double!,
             "lngFin": json["lngFin"].double!,
-            "token": Util.getUsuario()!["token"].string ?? self.json["token"].string!, // TODO: en qué momento obtengo el token de firebase?
+            "token": Util.getToken()!,
             "id": Util.getUsuario()!["id"].int!,
             "tipo": json["tipo"].int!,
             "tipo_pago": json["tipo_pago"].int!,
